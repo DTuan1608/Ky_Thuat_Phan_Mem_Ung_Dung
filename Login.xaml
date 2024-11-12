@@ -1,0 +1,100 @@
+﻿<Window xmlns:Controls="clr-namespace:Vst.Controls"  x:Class="KTPMUD.Login"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:KTPMUD"
+        mc:Ignorable="d"
+         Title="Đăng nhập" Height="400" Width="400">
+    <Window.Resources>
+        <Style TargetType="TextBox">
+            <Style.Triggers>
+                <DataTrigger Binding="{Binding Text, ElementName=UsernameTextBox}" Value="">
+                    <Setter Property="Visibility" Value="Visible"/>
+                </DataTrigger>
+                <DataTrigger Binding="{Binding IsFocused, ElementName=UsernameTextBox}" Value="True">
+                    <Setter Property="Visibility" Value="Collapsed"/>
+                </DataTrigger>
+            </Style.Triggers>
+        </Style>
+        <Style TargetType="PasswordBox">
+            <Style.Triggers>
+                <DataTrigger Binding="{Binding Text, ElementName=UsernameTextBox}" Value="">
+                    <Setter Property="Visibility" Value="Visible"/>
+                </DataTrigger>
+                <DataTrigger Binding="{Binding IsFocused, ElementName=UsernameTextBox}" Value="True">
+                    <Setter Property="Visibility" Value="Collapsed"/>
+                </DataTrigger>
+            </Style.Triggers>
+        </Style>
+    </Window.Resources>
+    <Grid>
+        <Border Width="300" Height="200" VerticalAlignment="Top" HorizontalAlignment="Left" Margin="56,126,0,0">
+            <Grid>
+                <Grid.RowDefinitions>
+                    <RowDefinition ></RowDefinition>
+                    <RowDefinition></RowDefinition>
+                    <RowDefinition></RowDefinition>
+                </Grid.RowDefinitions>
+                <Grid Grid.Row="0">
+                    <Label
+                        Content="Tài khoản: "
+                        FontSize="16"
+                        FontWeight="Bold"
+                        FontFamily="Times New Roman" 
+                        Visibility="Visible">
+                    </Label>
+                    <TextBox x:Name="User"
+                        FontSize="14"
+                        FontWeight="Light"
+                        FontFamily="Times New Roman" 
+                        Visibility="Visible" 
+                        Height="30" 
+                        Width="300" 
+                        Margin="0,27,0,10" />
+                </Grid>
+                <Grid Grid.Row="1">
+                    <Label
+                        Content="Mật khẩu: "
+                        FontSize="16"
+                        FontWeight="Bold"
+                        FontFamily="Times New Roman" 
+                        Visibility="Visible">
+                    </Label>
+                    <PasswordBox
+                        x:Name="Password"
+                        FontSize="14"
+                        FontWeight="Light"
+                        FontFamily="Times New Roman" 
+                        Visibility="Visible" 
+                        Height="30" 
+                        Width="300" 
+                        Margin="0,27,0,10">
+                    </PasswordBox>
+                </Grid>
+                <Grid Grid.Row="2">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition></ColumnDefinition>
+                        <ColumnDefinition></ColumnDefinition>
+                    </Grid.ColumnDefinitions>
+                    <Grid Grid.Column="0">
+                        <Controls:Button
+                            Url="main"
+                            Content="   Đăng nhập"
+                            Height="30"
+                            Width="90"
+                            Background="Gray" Loaded="Button_Loaded"/>
+                    </Grid>
+                    <Grid Grid.Column="1">
+                        <Controls:Button
+                            Content="    Đăng ký"
+                            Height="30"
+                            Width="80"
+                            Background="LightBlue">
+                        </Controls:Button>
+                    </Grid>
+                </Grid>
+            </Grid>
+        </Border>
+    </Grid>
+</Window>

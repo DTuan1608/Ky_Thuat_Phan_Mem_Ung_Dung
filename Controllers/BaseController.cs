@@ -6,10 +6,8 @@ using System.Threading.Tasks;
 
 namespace KTPMUD.Controllers
 {
-    public class HomeController : BaseController
+    public class BaseController : System.Mvc.Controller
     {
-        public virtual object IndexLayout() => View();
-
+        public virtual object Index() => View();
     }
 }
-//MVC - Model View Controller
