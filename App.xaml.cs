@@ -1,4 +1,5 @@
-﻿using System;
+﻿using KTPMUD.Controllers;
+using System;
 using System.Collections.Generic;
 using System.Configuration;
 using System.Data;
@@ -12,6 +13,12 @@ namespace KTPMUD
     /// Interaction logic for App.xaml
     /// </summary>
     public partial class App : Application
-    {
+    {   
+        protected override void OnStartup(StartupEventArgs e)
+        {
+            base.OnStartup(e); 
+            var loginWindow = new Login();
+            loginWindow.Show();
+        }
     }
 }
