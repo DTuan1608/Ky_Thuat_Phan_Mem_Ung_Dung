@@ -1,0 +1,25 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.11.35222.181
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "KTPMUD", "KTPMUD.csproj", "{028A24C4-A4AF-4BD6-806B-5C54D2FE351A}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{028A24C4-A4AF-4BD6-806B-5C54D2FE351A}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{028A24C4-A4AF-4BD6-806B-5C54D2FE351A}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{028A24C4-A4AF-4BD6-806B-5C54D2FE351A}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{028A24C4-A4AF-4BD6-806B-5C54D2FE351A}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {06402E6A-691E-4C8E-BA22-39C7F3BCD268}
+	EndGlobalSection
+EndGlobal
