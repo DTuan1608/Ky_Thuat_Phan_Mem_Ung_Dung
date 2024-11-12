@@ -1,4 +1,5 @@
-﻿using System;
+﻿using DeviceConfig.Views;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -13,23 +14,18 @@ using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
 
-namespace KTPMUD
+namespace KTPMUD.Views.Home
 {
     /// <summary>
-    /// Interaction logic for MainWindow.xaml
+    /// Interaction logic for IndexLayout.xaml
     /// </summary>
-    public partial class MainWindow : Window
+    public partial class IndexLayout : UserControl
     {
-        public MainWindow()
+        public IndexLayout()
         {
             InitializeComponent();
-
-            System.Mvc.Engine.Register(this, r => {
-                var view = r.View;
-                var uie = view.Content as UIElement;
-
-                this.MainContent.Child = uie; 
-            });
         }
     }
+
+    public class Index : BaseView<IndexLayout, object> { }
 }
