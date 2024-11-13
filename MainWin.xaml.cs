@@ -1,4 +1,6 @@
-﻿using System;
+﻿using DeviceConfig.Views;
+using KTPMUD.Views.Home;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -22,6 +24,18 @@ namespace KTPMUD.Views.Main
         public MainWin()
         {
             InitializeComponent();
+            System.Mvc.Engine.Register(this, r => {
+                var view = r.View;
+                var uie = view.Content as UIElement;
+                this.MainContent.Child = uie;
+            });
+        }
+
+        private void Button_Click(object sender, RoutedEventArgs e)
+        {
+            this.Close();
+            Login loggg = new Login();
+            loggg.Show();
         }
     }
 }

@@ -1,4 +1,4 @@
-﻿using KTPMUD.Controllers;
+﻿using KTPMUD.Views.Main;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -20,28 +20,17 @@ namespace KTPMUD
     /// </summary>
     public partial class Login : Window
     {
-        private readonly LoginController _loginController;
         public Login()
         {
             InitializeComponent();
-            _loginController = new LoginController();
         }
 
-        private void Button_Loaded(object sender, RoutedEventArgs e)
+        private void LoginButton_Click(object sender, RoutedEventArgs e)
         {
-            string username = User.Text;
-            string password = Password.Password;
-
-            if (_loginController.Login(username, password))
-            {
-                MainWindow mainView = new MainWindow();
-                mainView.Show();
-                this.Close(); // Đóng cửa sổ đăng nhập
-            }
-            else
-            {
-                MessageBox.Show("Sai tên đăng nhập hoặc mật khẩu!", "Lỗi", MessageBoxButton.OK, MessageBoxImage.Error);
-            }
+            MainWin m = new MainWin(); 
+            m.Show();
+            this.Hide();
         }
+        
     }
 }
