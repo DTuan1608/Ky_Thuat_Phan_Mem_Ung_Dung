@@ -12,4 +12,3 @@ namespace KTPMUD.Controllers
 
     }
 }
-//MVC - Model View Controller
