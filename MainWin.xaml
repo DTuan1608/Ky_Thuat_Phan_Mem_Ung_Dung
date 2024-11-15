@@ -47,10 +47,18 @@
                 <Controls:MenuButton Text="Trang chu" Url="home" />
             </WrapPanel>
         </Border>
-
+        <Label 
+            Grid.Column="0" 
+            Grid.Row="0" 
+            Content="Quản Lý Chăn Nuôi"
+            FontSize="24"
+            FontFamily="Time new Roman"
+            FontWeight="Bold"
+            Margin=" 5">
+        </Label>
         <ScrollViewer Background="#333" Grid.Row="1" VerticalScrollBarVisibility="Auto">
-            <Controls:SideMenu Text="He thong">
-                <Controls:SideMenuButton Text="Dang nhap" Url="home/login" />
+            <Controls:SideMenu Text="Cơ sở Chăn Nuôi">
+                <Controls:SideMenuButton Text="Cơ sở Chăn Nuôi" Url="CoSoChanNuoi" />
             </Controls:SideMenu>
         </ScrollViewer>
 

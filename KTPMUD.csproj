@@ -64,11 +64,15 @@
       <SubType>Designer</SubType>
     </ApplicationDefinition>
     <Compile Include="Controllers\BaseController.cs" />
+    <Compile Include="Controllers\CoSoChanNuoiController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Login.xaml.cs">
       <DependentUpon>Login.xaml</DependentUpon>
     </Compile>
     <Compile Include="Views\BaseView.cs" />
+    <Compile Include="Views\CoSoChanNuoi\CoSoChanNuoiLayout.xaml.cs">
+      <DependentUpon>CoSoChanNuoiLayout.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Views\Home\IndexLayout.xaml.cs">
       <DependentUpon>IndexLayout.xaml</DependentUpon>
     </Compile>
@@ -102,6 +106,10 @@
       <SubType>Code</SubType>
     </Compile>
     <Page Include="Login.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\CoSoChanNuoi\CoSoChanNuoiLayout.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
