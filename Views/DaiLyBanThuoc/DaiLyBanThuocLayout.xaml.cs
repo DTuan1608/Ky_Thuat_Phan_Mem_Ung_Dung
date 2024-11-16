@@ -14,7 +14,8 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
-
+using System.Collections.ObjectModel;
+using KTPMUD.Models.MainWinMaodel;
 namespace KTPMUD.Views.DaiLyBanThuoc
 {
     /// <summary>
@@ -25,6 +26,7 @@ namespace KTPMUD.Views.DaiLyBanThuoc
         public DaiLyBanThuocLayout()
         {
             InitializeComponent();
+            DataContext = new dlbtmodel();
         }
     }
     public class Index : BaseView<DaiLyBanThuocLayout, object> { }
