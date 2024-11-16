@@ -65,7 +65,15 @@
     </ApplicationDefinition>
     <Compile Include="Controllers\BaseController.cs" />
     <Compile Include="Controllers\CoSoChanNuoiController.cs" />
+    <Compile Include="Controllers\CoSoCheBienController.cs" />
+    <Compile Include="Controllers\CoSoGietMoController.cs" />
+    <Compile Include="Controllers\CoSoKhaoNghiemSPXLCTController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
+    <Compile Include="Controllers\DaiLyBanThuocController.cs" />
+    <Compile Include="Controllers\KhuVucTieuHuyController.cs" />
+    <Compile Include="Controllers\QuanLyDichController.cs" />
+    <Compile Include="Controllers\QuanLyTGTHController.cs" />
+    <Compile Include="Controllers\ToChucvaVungController.cs" />
     <Compile Include="Login.xaml.cs">
       <DependentUpon>Login.xaml</DependentUpon>
     </Compile>
@@ -73,13 +81,37 @@
     <Compile Include="Views\CoSoChanNuoi\CoSoChanNuoiLayout.xaml.cs">
       <DependentUpon>CoSoChanNuoiLayout.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Views\CoSoCheBien\CoSoCheBienLayout.xaml.cs">
+      <DependentUpon>CoSoCheBienLayout.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\CoSoGietMo\CoSoGietMoLayout.xaml.cs">
+      <DependentUpon>CoSoGietMoLayout.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\CoSoKhaoNghiemSPXLCT\CoSoKhaoNghiemSPXLCTLayout.xaml.cs">
+      <DependentUpon>CoSoKhaoNghiemSPXLCTLayout.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\DaiLyBanThuoc\DaiLyBanThuocLayout.xaml.cs">
+      <DependentUpon>DaiLyBanThuocLayout.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Views\Home\IndexLayout.xaml.cs">
       <DependentUpon>IndexLayout.xaml</DependentUpon>
     </Compile>
     <Compile Include="MainWin.xaml.cs">
       <DependentUpon>MainWin.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Views\KhuVucTieuHuy\KhuVucTieuHuyLayout.xaml.cs">
+      <DependentUpon>KhuVucTieuHuyLayout.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Views\MyElements.cs" />
+    <Compile Include="Views\QuanLyDich\QuanLyDichLayout.xaml.cs">
+      <DependentUpon>QuanLyDichLayout.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\QuanLyTGTH\QuanLyTGTHLayout.xaml.cs">
+      <DependentUpon>QuanLyTGTHLayout.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\ToChucvaVung\ToChucvaVungLayout.xaml.cs">
+      <DependentUpon>ToChucvaVungLayout.xaml</DependentUpon>
+    </Compile>
     <Compile Include="VST\Data\BsonDataMap.cs" />
     <Compile Include="VST\Data\Collection.cs" />
     <Compile Include="VST\Data\Database.cs" />
@@ -113,11 +145,43 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
+    <Page Include="Views\CoSoCheBien\CoSoCheBienLayout.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\CoSoGietMo\CoSoGietMoLayout.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\CoSoKhaoNghiemSPXLCT\CoSoKhaoNghiemSPXLCTLayout.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\DaiLyBanThuoc\DaiLyBanThuocLayout.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="Views\Home\IndexLayout.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="MainWin.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\KhuVucTieuHuy\KhuVucTieuHuyLayout.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\QuanLyDich\QuanLyDichLayout.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\QuanLyTGTH\QuanLyTGTHLayout.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\ToChucvaVung\ToChucvaVungLayout.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

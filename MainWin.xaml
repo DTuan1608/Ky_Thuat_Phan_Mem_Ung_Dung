@@ -14,7 +14,7 @@
         </Style>
         <Style TargetType="Controls:SideMenuButton">
             <Setter Property="Foreground" Value="#FFF" />
-            <Setter Property="FontSize" Value="16" />
+            <Setter Property="FontSize" Value="18" />
             <Style.Triggers>
                 <Trigger Property="IsMouseOver" Value="True">
                     <Setter Property="Background" Value="#008CFD" />
@@ -56,11 +56,19 @@
             FontWeight="Bold"
             Margin=" 5">
         </Label>
-        <ScrollViewer Background="#333" Grid.Row="1" VerticalScrollBarVisibility="Auto">
-            <Controls:SideMenu Text="Cơ sở Chăn Nuôi">
-                <Controls:SideMenuButton Text="Cơ sở Chăn Nuôi" Url="CoSoChanNuoi" />
-            </Controls:SideMenu>
-        </ScrollViewer>
+        <StackPanel Background="#333" Grid.Row="1" >
+            <Controls:SideMenuButton Text="Cơ sở Chăn Nuôi" Url="CoSoChanNuoi" />
+            <Controls:SideMenuButton Text="Cơ sở Chế Biến" Url="CoSoCheBien" />
+            <Controls:SideMenuButton Text="Quản lý tạm giữ tiêu hủy" Url="QuanLyTGTH" />
+            <Controls:SideMenuButton Text="Sản phẩm xử lý chất thải" Url="CoSoChanNuoi" />
+            <Controls:SideMenuButton Text="Cơ sở khảo nghiệm " Url="CoSoKhaoNghiemSPXLCT" />
+            <Controls:SideMenuButton Text="Đại lý bán thuốc" Url="DaiLyBanThuoc" />
+            <Controls:SideMenuButton Text="Cơ sở giết mổ" Url="CoSoGietMo" />
+            <Controls:SideMenuButton Text="Khu vực tiêu hủy" Url="KhuVucTieuHuy" />
+            <Controls:SideMenuButton Text="Quản lý tổ chức và vùng" Url="ToChucvaVung" />
+            <Controls:SideMenuButton Text="Quản lý động vật" Url="CoSoChanNuoi" />
+            <Controls:SideMenuButton Text="Quản lý dịch" Url="QuanLyDich" />
+        </StackPanel>
 
         <Button Content="Thoat" Grid.Column="1" Height="50" Width="50" Click="Button_Click">
             
