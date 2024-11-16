@@ -4,13 +4,23 @@
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:KTPMUD"
+        xmlns:uc="clr-namespace:KTPMUD.UserControllDT"
         mc:Ignorable="d"
-       Title="Đăng nhập" Height="200" Width="400">
+       Title="Đăng nhập" Height="200" Width="300" WindowStyle="None" ResizeMode="NoResize">
     <Grid>
-        <Label Content="Tên đăng nhập:" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="20,30,0,0"/>
-        <TextBox Name="txtUsername" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="120,30,0,0" Width="200"/>
-        <Label Content="Mật khẩu:" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="20,70,0,0"/>
-        <PasswordBox Name="txtPassword" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="120,70,0,0" Width="200"/>
-        <Button Content="Đăng nhập" HorizontalAlignment="Center" VerticalAlignment="Top" Margin="0,120,0,0" Width="100" Click="LoginButton_Click"/>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="30"> </RowDefinition>
+            <RowDefinition></RowDefinition>
+        </Grid.RowDefinitions>
+        <Grid>
+            <uc:ControlBar/>
+        </Grid>
+        <Grid Grid.Row="1">
+            <Label Content="Tên đăng nhập:" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="20,30,0,0"/>
+            <TextBox Name="txtUsername" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="120,30,0,0" Width="150"/>
+            <Label Content="Mật khẩu:" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="20,70,0,0"/>
+            <PasswordBox Name="txtPassword" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="120,75,0,0" Width="150"/>
+            <Button Content="Đăng nhập" HorizontalAlignment="Center" VerticalAlignment="Top" Margin="0,120,0,0" Width="100" Click="LoginButton_Click"/>
+        </Grid>
     </Grid>
 </Window>
