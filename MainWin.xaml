@@ -6,7 +6,7 @@
         xmlns:local="clr-namespace:KTPMUD.Views.Main"
         xmlns:uc="clr-namespace:KTPMUD.UserControllDT"
         mc:Ignorable="d"
-        Title="MainWin" Height="550" Width="981"
+        Title="Quản lý Chăn Nuôi" Height="550" Width="981"
         ResizeMode="NoResize"
         WindowStyle="None">
     <Window.Resources>
@@ -37,7 +37,7 @@
     </Window.Resources>
     <Grid>
         <Grid.RowDefinitions>
-            <RowDefinition Height="30"></RowDefinition>
+            <RowDefinition Height="35"></RowDefinition>
             <RowDefinition></RowDefinition>
         </Grid.RowDefinitions>
         <Grid Grid.Row="0">
@@ -45,36 +45,25 @@
         </Grid>
         <Grid Grid.Row="1">
             <Grid.ColumnDefinitions>
-                <ColumnDefinition Width="250"></ColumnDefinition>
+                <ColumnDefinition Width="230"></ColumnDefinition>
                 <ColumnDefinition></ColumnDefinition>
             </Grid.ColumnDefinitions>
             <Grid Grid.Column="0">
-                <Grid.RowDefinitions>
-                    <RowDefinition Height="50"></RowDefinition>
-                    <RowDefinition></RowDefinition>
-                </Grid.RowDefinitions>
-                <Label  
-                    Grid.Row="0" 
-                    Content="Quản Lý Chăn Nuôi"
-                    FontSize="24"
-                    FontFamily="Time new Roman"
-                    FontWeight="Bold"
-                    Margin=" 5">        
-                </Label>
                 <StackPanel Background="#333" Grid.Row="1" >
-                    <Controls:SideMenuButton Text="Trang chủ" Url="home" />
-                    <Controls:SideMenuButton Text="Cơ sở Chăn Nuôi" Url="CoSoChanNuoi" />
-                    <Controls:SideMenuButton Text="Cơ sở Chế Biến" Url="CoSoCheBien" />
-                    <Controls:SideMenuButton Text="Quản lý tạm giữ tiêu hủy" Url="QuanLyTGTH" />
-                    <Controls:SideMenuButton Text="Sản phẩm xử lý chất thải" Url="CoSoChanNuoi" />
-                    <Controls:SideMenuButton Text="Cơ sở khảo nghiệm " Url="CoSoKhaoNghiemSPXLCT" />
-                    <Controls:SideMenuButton Text="Đại lý bán thuốc" Url="DaiLyBanThuoc" />
-                    <Controls:SideMenuButton Text="Cơ sở giết mổ" Url="CoSoGietMo" />
-                    <Controls:SideMenuButton Text="Khu vực tiêu hủy" Url="KhuVucTieuHuy" />
-                    <Controls:SideMenuButton Text="Quản lý tổ chức và vùng" Url="ToChucvaVung" />
-                    <Controls:SideMenuButton Text="Quản lý động vật" Url="CoSoChanNuoi" />
-                    <Controls:SideMenuButton Text="Quản lý dịch" Url="QuanLyDich" />
-                    <Controls:SideMenuButton Text="Đăng xuất" Url="QuanLyDich" />
+
+                    <Controls:SideMenuButton Text="Trang chủ" Url="home" Margin="0 30 0 0"/>
+                    <Controls:SideMenuButton Text="Cơ sở Chăn Nuôi" Url="CoSoChanNuoi" Margin="0 5 0 0"/>
+                    <Controls:SideMenuButton Text="Cơ sở Chế Biến" Url="CoSoCheBien" Margin="0 5 0 0"/>
+                    <Controls:SideMenuButton Text="Quản lý tạm giữ tiêu hủy" Url="QuanLyTGTH" Margin="0 5 0 0"/>
+                    <Controls:SideMenuButton Text="Sản phẩm xử lý chất thải" Url="CoSoChanNuoi" Margin="0 5 0 0"/>
+                    <Controls:SideMenuButton Text="Cơ sở khảo nghiệm " Url="CoSoKhaoNghiemSPXLCT" Margin="0 5 0 0"/>
+                    <Controls:SideMenuButton Text="Đại lý bán thuốc" Url="DaiLyBanThuoc" Margin="0 5 0 0"/>
+                    <Controls:SideMenuButton Text="Cơ sở giết mổ" Url="CoSoGietMo" Margin="0 5 0 0"/>
+                    <Controls:SideMenuButton Text="Khu vực tiêu hủy" Url="KhuVucTieuHuy" Margin="0 5 0 0"/>
+                    <Controls:SideMenuButton Text="Quản lý tổ chức và vùng" Url="ToChucvaVung" Margin="0 5 0 0"/>
+                    <Controls:SideMenuButton Text="Quản lý động vật" Url="CoSoChanNuoi" Margin="0 5 0 0"/>
+                    <Controls:SideMenuButton Text="Quản lý dịch" Url="QuanLyDich" Margin="0 5 0 0"/>
+                    
                 </StackPanel>
             </Grid>
 

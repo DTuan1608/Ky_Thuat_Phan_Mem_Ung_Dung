@@ -15,7 +15,7 @@ using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
 using System.Collections.ObjectModel;
-using KTPMUD.Models.MainWinMaodel;
+using KTPMUD.Models.MainWinModel;
 namespace KTPMUD.Views.DaiLyBanThuoc
 {
     /// <summary>

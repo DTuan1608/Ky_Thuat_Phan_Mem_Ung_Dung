@@ -70,6 +70,7 @@
       <SubType>Designer</SubType>
     </ApplicationDefinition>
     <Compile Include="Controllers\BaseController.cs" />
+    <Compile Include="Controllers\ControlBarController.cs" />
     <Compile Include="Controllers\CoSoChanNuoiController.cs" />
     <Compile Include="Controllers\CoSoCheBienController.cs" />
     <Compile Include="Controllers\CoSoGietMoController.cs" />
@@ -84,7 +85,7 @@
       <DependentUpon>Login.xaml</DependentUpon>
     </Compile>
     <Compile Include="Models\DLBTModel\dtblmodel.cs" />
-    <Compile Include="Models\MainWinMaodel\MainWinModel.cs" />
+    <Compile Include="Models\MainWinModel\MainWinModel.cs" />
     <Compile Include="UserControllDT\ControlBar.xaml.cs">
       <DependentUpon>ControlBar.xaml</DependentUpon>
     </Compile>

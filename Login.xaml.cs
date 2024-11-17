@@ -31,6 +31,11 @@ namespace KTPMUD
             m.Show();
             this.Hide();
         }
+
+        private void SigninButton_Click(object sender, RoutedEventArgs e)
+        {
+
+        }
         
     }
 }

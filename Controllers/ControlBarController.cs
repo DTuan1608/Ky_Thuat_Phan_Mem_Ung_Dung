@@ -7,9 +7,13 @@ using System.Windows.Input;
 
 namespace KTPMUD.Controllers
 {
-    public class BaseController : System.Mvc.Controller
+    public class ControlBarController : BaseController
     {
-        public virtual object Index() => View();
-
+        public ICommand CloseWindowCommand { get; set; }
+        public ControlBarController() 
+        {
+            
+        }
+        
     }
 }

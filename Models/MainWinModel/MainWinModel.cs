@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 using LiveCharts.Wpf;
 using LiveCharts;
 
-namespace KTPMUD.Models.MainWinMaodel
+namespace KTPMUD.Models.MainWinModel
 {
 
     public class MainViewModel
