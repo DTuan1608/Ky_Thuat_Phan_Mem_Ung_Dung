@@ -1,5 +1,4 @@
 ﻿using DeviceConfig.Views;
-using KTPMUD.Models.MainWinMaodel;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -15,19 +14,18 @@ using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
 
-namespace KTPMUD.Views.Home
+namespace KTPMUD.Views.CSCN
 {
     /// <summary>
-    /// Interaction logic for IndexLayout.xaml
+    /// Interaction logic for CosochannuoiLayout.xaml
     /// </summary>
-    public partial class IndexLayout : UserControl
+    public partial class CosochannuoiLayout : UserControl
     {
-        public IndexLayout()
+        public CosochannuoiLayout()
         {
             InitializeComponent();
-            DataContext = new MainViewModel();
         }
+        
     }
-
-    public class Index : BaseView<IndexLayout, object> { }
+    public class Index : BaseView<CosochannuoiLayout, object> { }
 }
