@@ -1,4 +1,4 @@
-﻿using KTPMUD.Views.Main;
+﻿using DeviceConfig.Views;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -11,31 +11,21 @@ using System.Windows.Documents;
 using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
+using System.Windows.Navigation;
 using System.Windows.Shapes;
 
-namespace KTPMUD
+namespace KTPMUD.Views.CSCN
 {
     /// <summary>
-    /// Interaction logic for Login.xaml
+    /// Interaction logic for CosochannuoiLayout.xaml
     /// </summary>
-    public partial class Login : Window
+    public partial class CosochannuoiLayout : UserControl
     {
-        public Login()
+        public CosochannuoiLayout()
         {
             InitializeComponent();
         }
-
-        private void LoginButton_Click(object sender, RoutedEventArgs e)
-        {
-            MainWin m = new MainWin(); 
-            m.Show();
-            this.Hide();
-        }
-
-        private void SigninButton_Click(object sender, RoutedEventArgs e)
-        {
-
-        }
         
     }
+    public class Index : BaseView<CosochannuoiLayout, object> { }
 }

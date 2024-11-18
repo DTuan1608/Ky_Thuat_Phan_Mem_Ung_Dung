@@ -1,4 +1,6 @@
-﻿using System;
+﻿using KTPMUD.Controllers;
+using KTPMUD.Views.Main;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -25,7 +27,33 @@ namespace KTPMUD.UserControllDT
         public ControlBar()
         {
             InitializeComponent();
-            
+        }
+        private void CloseButton_Click(object sender, RoutedEventArgs e)
+        {
+            var currentWindow = Window.GetWindow(this);
+
+            if (currentWindow is MainWin)
+            {
+                // Quay về LoginWindow khi đóng MainWindow
+                var loginWindow = new Login();
+                loginWindow.Show();
+            }
+            else
+            {
+                Application.Current.Shutdown();
+            }
+
+            // Đóng cửa sổ hiện tại
+            currentWindow.Close();
+        }
+        private void MaximizeButton_Click(object sender, RoutedEventArgs e)
+        {
+            Window.GetWindow(this).WindowState = WindowState.Maximized;
+        }
+        private void MinimizeButton_Click(object sender, RoutedEventArgs e)
+        {
+            Window.GetWindow(this).WindowState = WindowState.Minimized;
         }
     }
+    
 }

@@ -3,13 +3,11 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using System.Windows.Input;
 
 namespace KTPMUD.Controllers
 {
-    public class BaseController : System.Mvc.Controller
+    internal class CSCNConttroller : BaseController
     {
-        public virtual object Index() => View();
-
+        public virtual object CosochannuoiLayout() => View();
     }
 }

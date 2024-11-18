@@ -6,21 +6,113 @@
         xmlns:local="clr-namespace:KTPMUD"
         xmlns:uc="clr-namespace:KTPMUD.UserControllDT"
         mc:Ignorable="d"
-       Title="Đăng nhập" Height="200" Width="300" WindowStyle="None" ResizeMode="NoResize">
+        Title="Đăng nhập"
+        Background="FloralWhite"
+        Height="500" Width="600" WindowStyle="None" ResizeMode="NoResize">
+    <Window.Resources>
+        <Style TargetType="Button">
+            <Setter Property="Template">
+                <Setter.Value>
+                    <ControlTemplate TargetType="Button">
+                        <Border CornerRadius="20" Background="{TemplateBinding Background}">
+                            <ContentPresenter HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                        </Border>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+        </Style>
+    </Window.Resources>
+
     <Grid>
         <Grid.RowDefinitions>
-            <RowDefinition Height="30"> </RowDefinition>
+            <RowDefinition Height="35"> </RowDefinition>
+            <RowDefinition Height="200"></RowDefinition>
             <RowDefinition></RowDefinition>
         </Grid.RowDefinitions>
-        <Grid>
+        <Grid Grid.Row="0">
             <uc:ControlBar/>
         </Grid>
         <Grid Grid.Row="1">
-            <Label Content="Tên đăng nhập:" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="20,30,0,0"/>
-            <TextBox Name="txtUsername" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="120,30,0,0" Width="150"/>
-            <Label Content="Mật khẩu:" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="20,70,0,0"/>
-            <PasswordBox Name="txtPassword" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="120,75,0,0" Width="150"/>
-            <Button Content="Đăng nhập" HorizontalAlignment="Center" VerticalAlignment="Top" Margin="0,120,0,0" Width="100" Click="LoginButton_Click"/>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="150"></RowDefinition>
+                <RowDefinition></RowDefinition>
+            </Grid.RowDefinitions>
+            <Image Grid.Row="0" 
+                   Source="E:\AnhKTPMUD\Logo.png" 
+                   Width="200" Height="100" 
+                   VerticalAlignment="Bottom" 
+                   HorizontalAlignment="Center" />
+            <Border Grid.Row= "1" >
+                <TextBlock
+                    Text="Quản lý chăn nuôi"
+                    FontSize="28"
+                    VerticalAlignment="Center"
+                    HorizontalAlignment="Center"
+                    FontWeight="Bold">
+                </TextBlock>
+            </Border>
+        </Grid>
+        <Grid Grid.Row="2">
+            <Grid.RowDefinitions>
+                <RowDefinition></RowDefinition>
+                <RowDefinition></RowDefinition>
+                <RowDefinition></RowDefinition>
+            </Grid.RowDefinitions>
+            <Grid Grid.Row="0">
+                <Grid.RowDefinitions>
+                    <RowDefinition></RowDefinition>
+                    <RowDefinition></RowDefinition>
+                </Grid.RowDefinitions>
+                <TextBlock Grid.Row="0" 
+                           Text="Tên đăng nhập:" 
+                           FontSize="18" 
+                           Margin="150 0 0 0"
+                           HorizontalAlignment="Left" 
+                           VerticalAlignment="Bottom">
+                </TextBlock>
+                <Border Grid.Row="1" Height="30" Width="300" CornerRadius="10" BorderBrush="Gray" BorderThickness="1" Background="White">
+                    <TextBox BorderThickness="0" Margin="5" Name="txtUsername" HorizontalAlignment="Stretch" VerticalAlignment="Stretch"/>
+                </Border>
+            </Grid>
+            <Grid Grid.Row="1">
+                <Grid.RowDefinitions>
+                    <RowDefinition></RowDefinition>
+                    <RowDefinition></RowDefinition>
+                </Grid.RowDefinitions>
+                <TextBlock Grid.Row="0"
+                    Text="Mật khẩu:" 
+                    FontSize="18" 
+                    Margin="150 0 0 0"
+                    HorizontalAlignment="Left" 
+                    VerticalAlignment="Bottom"/>
+                <Border Grid.Row="1" Height="30"  Width="300" CornerRadius="10" BorderBrush="Gray" BorderThickness="1" Background="White">
+                    <PasswordBox BorderThickness="0" Margin="5" Name="txtPassword" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Width="250"/>
+                </Border>
+            </Grid>
+            <Grid Grid.Row="2">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition></ColumnDefinition>
+                    <ColumnDefinition></ColumnDefinition>
+                </Grid.ColumnDefinitions>
+                <Button Grid.Column="0"
+                    Content="Đăng Nhập"
+                    Margin="100 0 0 0"
+                    Width="100" Height="40" 
+                    Background="MediumBlue" 
+                    Foreground="White" 
+                    FontWeight="Bold" 
+                    Click="LoginButton_Click">
+                </Button>
+                <Button Grid.Column="1"
+                    Margin="0 0 100 0"
+                    Content="Đăng ký"
+                    Width="100" Height="40" 
+                    Background="MediumBlue" 
+                    Foreground="White" 
+                    FontWeight="Bold" 
+                    Click="SigninButton_Click">
+                </Button>
+            </Grid>
         </Grid>
     </Grid>
 </Window>

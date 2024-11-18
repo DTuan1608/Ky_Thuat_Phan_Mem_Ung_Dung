@@ -5,8 +5,57 @@
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              xmlns:local="clr-namespace:KTPMUD.Views.DaiLyBanThuoc"
              mc:Ignorable="d" 
-             d:DesignHeight="450" d:DesignWidth="800" Background="Aqua">
+             d:DesignHeight="450" d:DesignWidth="800" Background="MediumPurple">
+
     <Grid>
-            
+        <Grid.RowDefinitions>
+            <RowDefinition Height="90"></RowDefinition>
+            <RowDefinition></RowDefinition>
+        </Grid.RowDefinitions>
+        <Border Grid.Row="2"
+                CornerRadius="20">
+            <DataGrid  AutoGenerateColumns="False" 
+                  ItemsSource="{Binding DataList}"
+                  GridLinesVisibility="None"
+                  RowBackground="#433F5B" 
+                  AlternatingRowBackground="#3A3553" 
+                  Foreground="Black" 
+                  Background="Chocolate"
+                  HeadersVisibility="Column"
+                  FontSize="14" 
+                  CanUserAddRows="False"
+                  Grid.Row="2">
+                <DataGrid.Columns>
+                    <DataGridTextColumn Header="Id" Binding="{Binding Id}" Width="50" />
+
+                    <DataGridTextColumn Header="Tên" Binding="{Binding Name}" Width="*"/>
+
+                    <DataGridTextColumn Header="Địa chỉ" Binding="{Binding Address}" Width="2*"/>
+
+                    <DataGridTextColumn Header="SĐT" Binding="{Binding Phone}" Width="*"/>
+
+                    <DataGridTemplateColumn Header="Chỉnh sửa" Width="80">
+
+                        <DataGridTemplateColumn.CellTemplate>
+                            <DataTemplate>
+                                <Button Content="✏️" Background="#6A4C93" Foreground="White" 
+                                    Command="{Binding DataContext.EditCommand, RelativeSource={RelativeSource AncestorType=DataGrid}}" 
+                                    CommandParameter="{Binding}" />
+                            </DataTemplate>
+                        </DataGridTemplateColumn.CellTemplate>
+                    </DataGridTemplateColumn>
+                    <DataGridTemplateColumn Header="Xóa" Width="80">
+                        <DataGridTemplateColumn.CellTemplate>
+                            <DataTemplate>
+                                <Button Content="🗑️" Background="#FF5A5F" Foreground="White" 
+                                    Command="{Binding DataContext.DeleteCommand, RelativeSource={RelativeSource AncestorType=DataGrid}}" 
+                                    CommandParameter="{Binding}" />
+                            </DataTemplate>
+                        </DataGridTemplateColumn.CellTemplate>
+                    </DataGridTemplateColumn>
+                </DataGrid.Columns>
+            </DataGrid>
+        </Border>
     </Grid>
+
 </UserControl>

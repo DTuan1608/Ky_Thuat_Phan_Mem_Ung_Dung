@@ -1,4 +1,5 @@
 ﻿using DeviceConfig.Views;
+using KTPMUD.Models.MainWinModel;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -24,6 +25,7 @@ namespace KTPMUD.Views.Home
         public IndexLayout()
         {
             InitializeComponent();
+            DataContext = new MainViewModel();
         }
     }
 
