@@ -5,6 +5,7 @@
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              xmlns:local="clr-namespace:KTPMUD.UserControllDT"
              mc:Ignorable="d" 
+             Name="ucControlBar"
              d:DesignHeight="35" d:DesignWidth="800">
     <Grid Background="LightBlue">
         <TextBlock
@@ -20,7 +21,7 @@
                 BorderBrush="LightBlue"
                 Background="LightBlue"
                 FontWeight="Bold"
-                FontSize="20"    Click="CloseButton_Click">
+                FontSize="20"   Click="CloseButton_Click" >
                 <Image Height="15" Width="15" Source="E:\AnhKTPMUD\Close1.png" RenderTransformOrigin="0.5,0.525"/>
             </Button>
         </Border>

@@ -84,6 +84,7 @@
     <Compile Include="Login.xaml.cs">
       <DependentUpon>Login.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Models\BaseModel.cs" />
     <Compile Include="Models\DLBTModel\dtblmodel.cs" />
     <Compile Include="Models\MainWinModel\MainWinModel.cs" />
     <Compile Include="UserControllDT\ControlBar.xaml.cs">

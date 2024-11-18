@@ -6,9 +6,11 @@
         xmlns:local="clr-namespace:KTPMUD.Views.Main"
         xmlns:uc="clr-namespace:KTPMUD.UserControllDT"
         mc:Ignorable="d"
+       
         Title="Quản lý Chăn Nuôi" Height="550" Width="981"
         ResizeMode="NoResize"
         WindowStyle="None">
+    
     <Window.Resources>
         <Style TargetType="Controls:SideMenuCaption">
             <Setter Property="Foreground" Value="#FFF" />
@@ -63,11 +65,29 @@
                     <Controls:SideMenuButton Text="Quản lý tổ chức và vùng" Url="ToChucvaVung" Margin="0 5 0 0"/>
                     <Controls:SideMenuButton Text="Quản lý động vật" Url="CoSoChanNuoi" Margin="0 5 0 0"/>
                     <Controls:SideMenuButton Text="Quản lý dịch" Url="QuanLyDich" Margin="0 5 0 0"/>
-                    
+
                 </StackPanel>
             </Grid>
+            <Grid Grid.Column="1">
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="50"></RowDefinition>
+                    <RowDefinition></RowDefinition>
+                </Grid.RowDefinitions>
+                <Grid Grid.Row="0">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition></ColumnDefinition>
+                        <ColumnDefinition></ColumnDefinition>
+                    </Grid.ColumnDefinitions>
+                    <Grid Grid.Column="0">
+                        <TextBlock Text="Cơ sở bla bla" FontSize="26" Margin="25 0 0 0" HorizontalAlignment="Left" VerticalAlignment="Center"/>
+                    </Grid>
 
-            <Border x:Name="MainContent" Grid.Column="1" Grid.Row="1" />
+                    <Grid Grid.Column="1">
+                        <TextBlock Text="DisplayName ở đây" FontSize="26" Margin="0 0 25 0" VerticalAlignment="Center" HorizontalAlignment="Right"/>
+                    </Grid>
+                </Grid>
+                <Border x:Name="MainContent" Grid.Row="1"/>
+            </Grid>
         </Grid>
         
     </Grid>
