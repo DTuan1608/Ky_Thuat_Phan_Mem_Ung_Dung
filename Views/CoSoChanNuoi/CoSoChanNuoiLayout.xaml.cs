@@ -1,6 +1,7 @@
 ﻿using DeviceConfig.Views;
 using System;
 using System.Collections.Generic;
+using System.Collections.ObjectModel;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -27,5 +28,4 @@ namespace KTPMUD.Views.CoSoChanNuoi
         }
     }
     public class Index : BaseView<CoSoChanNuoiLayout, object> { }
-
 }

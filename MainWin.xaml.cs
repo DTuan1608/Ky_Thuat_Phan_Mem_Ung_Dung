@@ -1,4 +1,5 @@
 ﻿using DeviceConfig.Views;
+using KTPMUD.Models.MainWinModel;
 using KTPMUD.Views.Home;
 using System;
 using System.Collections.Generic;
@@ -21,21 +22,16 @@ namespace KTPMUD.Views.Main
     /// </summary>
     public partial class MainWin : Window
     {
+        
         public MainWin()
         {
             InitializeComponent();
+           
             System.Mvc.Engine.Register(this, r => {
                 var view = r.View;
                 var uie = view.Content as UIElement;
                 this.MainContent.Child = uie;
             });
-        }
-
-        private void Button_Click(object sender, RoutedEventArgs e)
-        {
-            this.Close();
-            Login loggg = new Login();
-            loggg.Show();
         }
 
     }

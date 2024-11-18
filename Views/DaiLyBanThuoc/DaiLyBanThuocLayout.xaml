@@ -27,15 +27,11 @@
                   Grid.Row="2">
                 <DataGrid.Columns>
                     <DataGridTextColumn Header="Id" Binding="{Binding Id}" Width="50" />
-
                     <DataGridTextColumn Header="Tên" Binding="{Binding Name}" Width="*"/>
-
                     <DataGridTextColumn Header="Địa chỉ" Binding="{Binding Address}" Width="2*"/>
-
                     <DataGridTextColumn Header="SĐT" Binding="{Binding Phone}" Width="*"/>
-
+                    
                     <DataGridTemplateColumn Header="Chỉnh sửa" Width="80">
-
                         <DataGridTemplateColumn.CellTemplate>
                             <DataTemplate>
                                 <Button Content="✏️" Background="#6A4C93" Foreground="White" 
@@ -44,6 +40,7 @@
                             </DataTemplate>
                         </DataGridTemplateColumn.CellTemplate>
                     </DataGridTemplateColumn>
+                   
                     <DataGridTemplateColumn Header="Xóa" Width="80">
                         <DataGridTemplateColumn.CellTemplate>
                             <DataTemplate>
@@ -53,6 +50,7 @@
                             </DataTemplate>
                         </DataGridTemplateColumn.CellTemplate>
                     </DataGridTemplateColumn>
+                    
                 </DataGrid.Columns>
             </DataGrid>
         </Border>

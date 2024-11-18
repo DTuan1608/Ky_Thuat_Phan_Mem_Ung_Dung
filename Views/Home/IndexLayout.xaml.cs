@@ -25,7 +25,7 @@ namespace KTPMUD.Views.Home
         public IndexLayout()
         {
             InitializeComponent();
-            DataContext = new MainViewModel();
+            
         }
     }
 

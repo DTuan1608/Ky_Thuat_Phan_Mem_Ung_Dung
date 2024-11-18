@@ -1,4 +1,4 @@
-﻿<Window x:Class="KTPMUD.Login"
+﻿<Window xmlns:Controls="clr-namespace:Vst.Controls"  x:Class="KTPMUD.Login"
         xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
@@ -10,16 +10,12 @@
         Background="FloralWhite"
         Height="500" Width="600" WindowStyle="None" ResizeMode="NoResize">
     <Window.Resources>
-        <Style TargetType="Button">
-            <Setter Property="Template">
-                <Setter.Value>
-                    <ControlTemplate TargetType="Button">
-                        <Border CornerRadius="20" Background="{TemplateBinding Background}">
-                            <ContentPresenter HorizontalAlignment="Center" VerticalAlignment="Center"/>
-                        </Border>
-                    </ControlTemplate>
-                </Setter.Value>
-            </Setter>
+        <Style TargetType = "Button">
+            <Style.Triggers>
+                <Trigger Property="IsMouseOver" Value="True">
+                    <Setter Property="Background" Value="Black" />
+                </Trigger>
+            </Style.Triggers>
         </Style>
     </Window.Resources>
 
@@ -94,11 +90,11 @@
                     <ColumnDefinition></ColumnDefinition>
                     <ColumnDefinition></ColumnDefinition>
                 </Grid.ColumnDefinitions>
-                <Button Grid.Column="0"
+                <Button  Grid.Column="0"
                     Content="Đăng Nhập"
                     Margin="100 0 0 0"
                     Width="100" Height="40" 
-                    Background="MediumBlue" 
+                    Background="Black" 
                     Foreground="White" 
                     FontWeight="Bold" 
                     Click="LoginButton_Click">
@@ -107,7 +103,7 @@
                     Margin="0 0 100 0"
                     Content="Đăng ký"
                     Width="100" Height="40" 
-                    Background="MediumBlue" 
+                    Background="Black" 
                     Foreground="White" 
                     FontWeight="Bold" 
                     Click="SigninButton_Click">
