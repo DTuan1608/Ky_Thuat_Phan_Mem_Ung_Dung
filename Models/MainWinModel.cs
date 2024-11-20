@@ -8,9 +8,8 @@ using LiveCharts;
 using System.Windows.Input;
 using System.Windows.Controls;
 
-namespace KTPMUD.Models.MainWinModel
+namespace Models
 {
-
     public class MainWinModel : BaseModel
     {
         public SeriesCollection SeriesCollection1 { get; set; }

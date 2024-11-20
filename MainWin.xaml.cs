@@ -1,5 +1,4 @@
 ﻿using DeviceConfig.Views;
-using KTPMUD.Models.MainWinModel;
 using KTPMUD.Views.Home;
 using System;
 using System.Collections.Generic;
@@ -31,6 +30,11 @@ namespace KTPMUD.Views.Main
                 var view = r.View;
                 var uie = view.Content as UIElement;
                 this.MainContent.Child = uie;
+
+                var cname = System.Mvc.Engine.RequestContext.ControllerName;
+                InsertButton.Url = cname + "/Insert";
+                EditButton.Url = cname + "/Edit";
+                DeleteButton.Url = cname + "/Delete";
             });
         }
 

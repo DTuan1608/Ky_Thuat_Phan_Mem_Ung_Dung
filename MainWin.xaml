@@ -1,10 +1,11 @@
-﻿<Window xmlns:Controls="clr-namespace:Vst.Controls"  x:Class="KTPMUD.Views.Main.MainWin"
+﻿<Window x:Class="KTPMUD.Views.Main.MainWin"
         xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:KTPMUD.Views.Main"
         xmlns:uc="clr-namespace:KTPMUD.UserControllDT"
+        xmlns:dt="clr-namespace:Vst.Controls" 
         mc:Ignorable="d"
        
         Title="Quản lý Chăn Nuôi" Height="550" Width="981"
@@ -12,21 +13,22 @@
         WindowStyle="None">
     
     <Window.Resources>
-        <Style TargetType="Controls:SideMenuCaption">
+        <Style TargetType="dt:SideMenuCaption">
             <Setter Property="Foreground" Value="#FFF" />
             <Setter Property="FontSize" Value="16" />
             <Setter Property="FontWeight" Value="Bold" />
         </Style>
-        <Style TargetType="Controls:SideMenuButton">
+        <Style TargetType="dt:SideMenuButton">
             <Setter Property="Foreground" Value="#FFF" />
             <Setter Property="FontSize" Value="18" />
+            
             <Style.Triggers>
                 <Trigger Property="IsMouseOver" Value="True">
                     <Setter Property="Background" Value="#008CFD" />
                 </Trigger>
             </Style.Triggers>
         </Style>
-        <Style TargetType="Controls:MenuButton">
+        <Style TargetType="dt:MenuButton">
             <Setter Property="Foreground" Value="#FFF" />
             <Setter Property="Background" Value="#008cfd" />
             <Setter Property="Opacity" Value="0.7" />
@@ -52,20 +54,18 @@
             </Grid.ColumnDefinitions>
             <Grid Grid.Column="0">
                 <StackPanel Background="#333" Grid.Row="1" >
-
-                    <Controls:SideMenuButton Text="Trang chủ" Url="home" Margin="0 30 0 0"/>
-                    <Controls:SideMenuButton Text="Cơ sở Chăn Nuôi" Url="CoSoChanNuoi" Margin="0 5 0 0"/>
-                    <Controls:SideMenuButton Text="Cơ sở Chế Biến" Url="CoSoCheBien" Margin="0 5 0 0"/>
-                    <Controls:SideMenuButton Text="Quản lý tạm giữ tiêu hủy" Url="QuanLyTGTH" Margin="0 5 0 0"/>
-                    <Controls:SideMenuButton Text="Sản phẩm xử lý chất thải" Url="CoSoChanNuoi" Margin="0 5 0 0"/>
-                    <Controls:SideMenuButton Text="Cơ sở khảo nghiệm " Url="CoSoKhaoNghiemSPXLCT" Margin="0 5 0 0"/>
-                    <Controls:SideMenuButton Text="Đại lý bán thuốc" Url="DaiLyBanThuoc" Margin="0 5 0 0"/>
-                    <Controls:SideMenuButton Text="Cơ sở giết mổ" Url="CoSoGietMo" Margin="0 5 0 0"/>
-                    <Controls:SideMenuButton Text="Khu vực tiêu hủy" Url="KhuVucTieuHuy" Margin="0 5 0 0"/>
-                    <Controls:SideMenuButton Text="Quản lý tổ chức và vùng" Url="ToChucvaVung" Margin="0 5 0 0"/>
-                    <Controls:SideMenuButton Text="Quản lý động vật" Url="CoSoChanNuoi" Margin="0 5 0 0"/>
-                    <Controls:SideMenuButton Text="Quản lý dịch" Url="QuanLyDich" Margin="0 5 0 0"/>
-
+                    <dt:SideMenuButton Text="Trang chủ" Url="home" Margin="0 30 0 0"/>
+                    <dt:SideMenuButton Text="Cơ sở Chăn Nuôi" Url="CoSoChanNuoi" Margin="0 5 0 0"/>
+                    <dt:SideMenuButton Text="Cơ sở Chế Biến" Url="CoSoCheBien" Margin="0 5 0 0"/>
+                    <dt:SideMenuButton Text="Quản lý tạm giữ tiêu hủy" Url="QuanLyTGTH" Margin="0 5 0 0"/>
+                    <dt:SideMenuButton Text="Sản phẩm xử lý chất thải" Url="CoSoChanNuoi" Margin="0 5 0 0"/>
+                    <dt:SideMenuButton Text="Cơ sở khảo nghiệm " Url="CoSoKhaoNghiemSPXLCT" Margin="0 5 0 0"/>
+                    <dt:SideMenuButton Text="Đại lý bán thuốc" Url="DaiLyBanThuoc" Margin="0 5 0 0"/>
+                    <dt:SideMenuButton Text="Cơ sở giết mổ" Url="CoSoGietMo" Margin="0 5 0 0"/>
+                    <dt:SideMenuButton Text="Khu vực tiêu hủy" Url="KhuVucTieuHuy" Margin="0 5 0 0"/>
+                    <dt:SideMenuButton Text="Quản lý tổ chức và vùng" Url="ToChucvaVung" Margin="0 5 0 0"/>
+                    <dt:SideMenuButton Text="Quản lý động vật" Url="CoSoChanNuoi" Margin="0 5 0 0"/>
+                    <dt:SideMenuButton Text="Quản lý dịch" Url="QuanLyDich" Margin="0 5 0 0"/>
                 </StackPanel>
             </Grid>
             <Grid Grid.Column="1">
@@ -78,9 +78,33 @@
                         <ColumnDefinition></ColumnDefinition>
                         <ColumnDefinition></ColumnDefinition>
                     </Grid.ColumnDefinitions>
-                    <Grid Grid.Column="0">
-                        <TextBlock Text="Cơ sở bla bla" FontSize="26" Margin="25 0 0 0" HorizontalAlignment="Left" VerticalAlignment="Center"/>
-                    </Grid>
+                    <StackPanel Orientation="Horizontal" Grid.Column="0" >
+                        <Border CornerRadius="10" Height="50" Width="80" >
+                            <dt:MenuButton Background="Green" 
+                                HorizontalAlignment="Center" 
+                                VerticalAlignment="Stretch" 
+                                Text="Thêm"  FontFamily="Time New Roman"
+                                FontSize="22" Margin="5"
+                                x:Name="InsertButton" />
+                        </Border>
+                        <Border CornerRadius="20"  >
+                            <dt:MenuButton Background="Green" 
+                                HorizontalAlignment="Center" 
+                                VerticalAlignment="Center" 
+                                Text="Sửa"  FontFamily="Time New Roman"
+                                FontSize="22" Margin="5"
+                                Height="50" Width="70"
+                                x:Name="EditButton" />
+                        </Border>
+                        <Border CornerRadius="10" Height="50" Width="70" >
+                            <dt:MenuButton Background="Green" 
+                                HorizontalAlignment="Stretch" 
+                                VerticalAlignment="Stretch" 
+                                Text="Xóa"  FontFamily="Time New Roman"
+                                FontSize="22" Margin="5"
+                                x:Name="DeleteButton" />    
+                        </Border>
+                    </StackPanel>
 
                     <Grid Grid.Column="1">
                         <TextBlock Text="DisplayName ở đây" FontSize="26" Margin="0 0 25 0" VerticalAlignment="Center" HorizontalAlignment="Right"/>

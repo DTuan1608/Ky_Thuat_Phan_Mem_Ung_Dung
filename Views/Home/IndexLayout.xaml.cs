@@ -1,5 +1,4 @@
 ﻿using DeviceConfig.Views;
-using KTPMUD.Models.MainWinModel;
 using System;
 using System.Collections.Generic;
 using System.Linq;

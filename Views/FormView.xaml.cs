@@ -1,7 +1,6 @@
 ﻿using DeviceConfig.Views;
 using System;
 using System.Collections.Generic;
-using System.Collections.ObjectModel;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -15,20 +14,27 @@ using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
 
-namespace KTPMUD.Views.CoSoChanNuoi
+namespace KTPMUD.Views
 {
     /// <summary>
-    /// Interaction logic for CoSoChanNuoiLayout.xaml
+    /// Interaction logic for FormView.xaml
     /// </summary>
-    public partial class CoSoChanNuoiLayout : UserControl
+    public partial class FormViewLayout : UserControl
     {
-        public CoSoChanNuoiLayout()
+        public FormViewLayout()
         {
             InitializeComponent();
         }
     }
-    public class Index : BaseView<CoSoChanNuoiLayout, object> { }
 
-
-
+    public class FormView<TView> : BaseView<FormViewLayout, object> 
+        where TView : FrameworkElement, new()
+    {
+        public TView EditBox { get; set; }
+        protected override void RenderCore()
+        {
+            EditBox = new TView();
+            MainContent.Body.Child = EditBox;
+        }
+    }
 }

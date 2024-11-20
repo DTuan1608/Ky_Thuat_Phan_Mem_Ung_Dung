@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 namespace DeviceConfig.Views
 {
     public class BaseView<TControl, TModel> : System.Mvc.IView
-        where TControl : System.Windows.UIElement, new()
+        where TControl : System.Windows.FrameworkElement, new()
     {
         public TControl MainContent { get; set; }
         public TModel Model { get; set; }
@@ -19,6 +19,7 @@ namespace DeviceConfig.Views
             Model = (TModel)model;
             MainContent = new TControl();
 
+            MainContent.DataContext = Model;
             RenderCore();
         }
     }
