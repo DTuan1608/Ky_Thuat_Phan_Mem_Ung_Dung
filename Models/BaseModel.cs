@@ -7,7 +7,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Input;
 
-namespace KTPMUD.Models
+namespace Models
 {
     public class BaseModel:INotifyPropertyChanged
     {
@@ -41,6 +41,7 @@ namespace KTPMUD.Models
             }
             catch { return true; }
         }
+
         public void Execute(object parameter){
             _canExecute((T)parameter);
         }
