@@ -34,7 +34,9 @@ namespace KTPMUD
 
         private void SigninButton_Click(object sender, RoutedEventArgs e)
         {
-
+            SignWin x = new SignWin();
+            x.Show();
+            this.Hide();
         }
         
     }

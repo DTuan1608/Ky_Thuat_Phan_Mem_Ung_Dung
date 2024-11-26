@@ -9,6 +9,6 @@ namespace KTPMUD.Controllers
 {
     internal class DaiLyBanThuocController:BaseController
     {
-        public virtual object DaiLyBanThuocLayout() => View(new dlbtmodel());
+        public virtual object DaiLyBanThuocLayout() => View();
     }
 }

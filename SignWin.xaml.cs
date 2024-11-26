@@ -10,30 +10,18 @@ using System.Windows.Documents;
 using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
-using System.Windows.Navigation;
 using System.Windows.Shapes;
 
-namespace KTPMUD.Views.CoSoChanNuoi
+namespace KTPMUD
 {
     /// <summary>
-    /// Interaction logic for EditLayout.xaml
+    /// Interaction logic for SignWin.xaml
     /// </summary>
-    public partial class EditLayout : UserControl
+    public partial class SignWin : Window
     {
-        public EditLayout()
+        public SignWin()
         {
             InitializeComponent();
         }
     }
-
-    public class Edit : FormView<EditLayout>
-    {
-        
-    }
-
-    public class Insert : Edit { 
-        
-    }
-
-    public class Delete : Edit { }
 }
