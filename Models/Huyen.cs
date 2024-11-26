@@ -12,21 +12,23 @@ namespace KTPMUD.Models
     using System;
     using System.Collections.Generic;
     
-    public partial class Province
+    public partial class Huyen
     {
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
-        public Province()
+        public Huyen()
         {
-            this.Districts = new HashSet<District>();
             this.Nguoi_dung = new HashSet<Nguoi_dung>();
+            this.Xas = new HashSet<Xa>();
         }
     
+        public string DistrictId { get; set; }
+        public string TenHuyen { get; set; }
         public string ProvinceId { get; set; }
-        public string TenTinh { get; set; }
     
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<District> Districts { get; set; }
+        public virtual Tinh Tinh { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Nguoi_dung> Nguoi_dung { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<Xa> Xas { get; set; }
     }
 }

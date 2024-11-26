@@ -33,7 +33,7 @@ namespace KTPMUD.Views.CoSoChanNuoi
         protected override void RenderCore()
         {
             base.RenderCore();
-            MainContent.dataGrid.ItemsSource = Model.DefaultView;
+           
         }
     }
 

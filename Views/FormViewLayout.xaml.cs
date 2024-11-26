@@ -27,7 +27,7 @@ namespace KTPMUD.Views
         }
     }
     
-    public class BaseForView<TView> : BaseView<FormViewLayout, object>
+    public class BaseFormView<TView> : BaseView<FormViewLayout, object>
         where TView : FrameworkElement, new()
     {
         protected override void RenderCore()

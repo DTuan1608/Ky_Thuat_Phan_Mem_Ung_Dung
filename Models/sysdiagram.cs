@@ -12,14 +12,12 @@ namespace KTPMUD.Models
     using System;
     using System.Collections.Generic;
     
-    public partial class GiayChungNhan
+    public partial class sysdiagram
     {
-        public string MaChungNhan { get; set; }
-        public string TenChungNhan { get; set; }
-        public string MaCoSoCN { get; set; }
-        public Nullable<System.DateTime> NgayCap { get; set; }
-        public string MaCoQuanCap { get; set; }
-    
-        public virtual CoQuanCapChungNhan CoQuanCapChungNhan { get; set; }
+        public string name { get; set; }
+        public int principal_id { get; set; }
+        public int diagram_id { get; set; }
+        public Nullable<int> version { get; set; }
+        public byte[] definition { get; set; }
     }
 }

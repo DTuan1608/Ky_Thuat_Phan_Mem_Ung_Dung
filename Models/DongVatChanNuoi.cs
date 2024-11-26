@@ -17,15 +17,16 @@ namespace KTPMUD.Models
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
         public DongVatChanNuoi()
         {
+            this.CoSoChanNuois = new HashSet<CoSoChanNuoi>();
             this.ThongKeChanNuoiNhoLes = new HashSet<ThongKeChanNuoiNhoLe>();
             this.Thuocs = new HashSet<Thuoc>();
         }
     
         public string MaDV { get; set; }
         public string LoaiDV { get; set; }
-        public string MaCoSoCN { get; set; }
     
-        public virtual CoSoChanNuoi CoSoChanNuoi { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<CoSoChanNuoi> CoSoChanNuois { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<ThongKeChanNuoiNhoLe> ThongKeChanNuoiNhoLes { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]

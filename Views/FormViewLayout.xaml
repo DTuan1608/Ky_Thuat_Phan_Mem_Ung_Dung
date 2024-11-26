@@ -20,9 +20,9 @@
     </UserControl.Resources>
     <Grid>
         <Grid.RowDefinitions>
+            <RowDefinition Height="50"/>
             <RowDefinition />
-            <RowDefinition />
-            <RowDefinition />
+            <RowDefinition Height="50"/>
         </Grid.RowDefinitions>
         <Border Grid.Row="0" x:Name="Header">
             <Label Content="TITLE" />

@@ -24,8 +24,8 @@ namespace KTPMUD.Models
         public string WardId { get; set; }
     
         public virtual Chuc_vu Chuc_vu { get; set; }
-        public virtual District District { get; set; }
-        public virtual Province Province { get; set; }
-        public virtual Ward Ward { get; set; }
+        public virtual Huyen Huyen { get; set; }
+        public virtual Tinh Tinh { get; set; }
+        public virtual Xa Xa { get; set; }
     }
 }

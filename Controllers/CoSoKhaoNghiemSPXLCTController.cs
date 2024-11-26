@@ -8,6 +8,6 @@ namespace KTPMUD.Controllers
 {
     internal class CoSoKhaoNghiemSPXLCTController : BaseController
     {
-        public virtual object Index() => View(Provider.Select("SP_XL_chat_thai"));
+        public virtual object CoSoKhaoNghiemLayout() => View();
     }
 }
