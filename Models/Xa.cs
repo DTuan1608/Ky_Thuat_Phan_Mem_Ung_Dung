@@ -12,10 +12,10 @@ namespace KTPMUD.Models
     using System;
     using System.Collections.Generic;
     
-    public partial class Ward
+    public partial class Xa
     {
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
-        public Ward()
+        public Xa()
         {
             this.Nguoi_dung = new HashSet<Nguoi_dung>();
         }
@@ -24,7 +24,7 @@ namespace KTPMUD.Models
         public string TenXa { get; set; }
         public string DistrictId { get; set; }
     
-        public virtual District District { get; set; }
+        public virtual Huyen Huyen { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Nguoi_dung> Nguoi_dung { get; set; }
     }

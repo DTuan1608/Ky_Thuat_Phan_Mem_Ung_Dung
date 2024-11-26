@@ -26,7 +26,7 @@ namespace KTPMUD.Views.CoSoChanNuoi
         }
     }
 
-    class Edit : BaseForView<EditBox>
+    class Edit : BaseFormView<EditBox>
     {
 
     }

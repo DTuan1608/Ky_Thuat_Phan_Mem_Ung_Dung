@@ -17,6 +17,7 @@ namespace KTPMUD.Models
         public string IDSP { get; set; }
         public string TenSP { get; set; }
         public string LoaiSP { get; set; }
-        public Nullable<int> HanSDSP { get; set; }
+        public Nullable<System.DateTime> NgaySX { get; set; }
+        public Nullable<System.DateTime> HanSD { get; set; }
     }
 }

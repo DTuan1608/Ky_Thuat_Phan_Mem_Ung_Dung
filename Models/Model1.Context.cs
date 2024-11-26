@@ -13,10 +13,10 @@ namespace KTPMUD.Models
     using System.Data.Entity;
     using System.Data.Entity.Infrastructure;
     
-    public partial class DatabaseEntities : DbContext
+    public partial class Check1Entities : DbContext
     {
-        public DatabaseEntities()
-            : base("name=DatabaseEntities")
+        public Check1Entities()
+            : base("name=Check1Entities")
         {
         }
     
@@ -33,21 +33,22 @@ namespace KTPMUD.Models
         public virtual DbSet<DaiLyThuoc> DaiLyThuocs { get; set; }
         public virtual DbSet<DichBenh> DichBenhs { get; set; }
         public virtual DbSet<DieuKienChanNuoi> DieuKienChanNuois { get; set; }
-        public virtual DbSet<District> Districts { get; set; }
         public virtual DbSet<DongVatChanNuoi> DongVatChanNuois { get; set; }
         public virtual DbSet<GiayChungNhan> GiayChungNhans { get; set; }
+        public virtual DbSet<Huyen> Huyens { get; set; }
         public virtual DbSet<KhuTamGiu> KhuTamGius { get; set; }
         public virtual DbSet<LoaiCoSo> LoaiCoSoes { get; set; }
         public virtual DbSet<Nguoi_dung> Nguoi_dung { get; set; }
-        public virtual DbSet<Province> Provinces { get; set; }
         public virtual DbSet<QuanLyChiCucThuY> QuanLyChiCucThuYs { get; set; }
         public virtual DbSet<QuanLyDaiLyThuoc> QuanLyDaiLyThuocs { get; set; }
         public virtual DbSet<QuanLyTamGiuTieuHuy> QuanLyTamGiuTieuHuys { get; set; }
         public virtual DbSet<SP_XL_chat_thai> SP_XL_chat_thai { get; set; }
+        public virtual DbSet<sysdiagram> sysdiagrams { get; set; }
         public virtual DbSet<ThongKeChanNuoiNhoLe> ThongKeChanNuoiNhoLes { get; set; }
         public virtual DbSet<Thuoc> Thuocs { get; set; }
+        public virtual DbSet<Tinh> Tinhs { get; set; }
         public virtual DbSet<ToChucCaNhanChanNuoi> ToChucCaNhanChanNuois { get; set; }
         public virtual DbSet<Vung> Vungs { get; set; }
-        public virtual DbSet<Ward> Wards { get; set; }
+        public virtual DbSet<Xa> Xas { get; set; }
     }
 }

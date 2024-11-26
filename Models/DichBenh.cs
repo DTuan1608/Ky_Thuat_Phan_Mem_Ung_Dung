@@ -17,6 +17,7 @@ namespace KTPMUD.Models
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
         public DichBenh()
         {
+            this.CoSoChanNuois = new HashSet<CoSoChanNuoi>();
             this.QuanLyTamGiuTieuHuys = new HashSet<QuanLyTamGiuTieuHuy>();
         }
     
@@ -25,6 +26,8 @@ namespace KTPMUD.Models
         public Nullable<int> MucDoNguyHiem { get; set; }
         public string CachXuLy { get; set; }
     
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<CoSoChanNuoi> CoSoChanNuois { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<QuanLyTamGiuTieuHuy> QuanLyTamGiuTieuHuys { get; set; }
     }

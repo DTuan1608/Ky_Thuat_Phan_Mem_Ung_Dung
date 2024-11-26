@@ -4,7 +4,7 @@
   <edmx:Runtime>
     <!-- SSDL content -->
     <edmx:StorageModels>
-      <Schema Namespace="DatabaseModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+      <Schema Namespace="Check1Model.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
         <EntityType Name="Chuc_vu">
           <Key>
             <PropertyRef Name="IdRole" />
@@ -32,6 +32,8 @@
           <Property Name="MaTCCN" Type="varchar" MaxLength="50" />
           <Property Name="DiaChiCSCN" Type="nvarchar" MaxLength="255" />
           <Property Name="MaDieuKien" Type="varchar" MaxLength="50" />
+          <Property Name="MaDV" Type="varchar" MaxLength="50" />
+          <Property Name="MaDichBenh" Type="varchar" MaxLength="50" />
           <Property Name="MaLCS" Type="varchar" MaxLength="20" />
         </EntityType>
         <EntityType Name="CoSoKhaoNghiemSPXLCT">
@@ -72,12 +74,6 @@
           <Property Name="MucDoNguyHiem" Type="int" />
           <Property Name="CachXuLy" Type="text" />
         </EntityType>
-        <!--Errors Found During Generation:
-warning 6013: The table/view 'Database.dbo.DICHBENHTAICOSOCN' does not have a primary key defined and no valid primary key could be inferred. This table/view has been excluded. To use the entity, you will need to review your schema, add the correct keys, and uncomment it.
-        <EntityType Name="DICHBENHTAICOSOCN">
-          <Property Name="MaCoSoCN" Type="varchar" MaxLength="50" />
-          <Property Name="MaDichBenh" Type="varchar" MaxLength="50" />
-        </EntityType>-->
         <EntityType Name="DieuKienChanNuoi">
           <Key>
             <PropertyRef Name="MaDieuKien" />
@@ -85,21 +81,12 @@ warning 6013: The table/view 'Database.dbo.DICHBENHTAICOSOCN' does not have a pr
           <Property Name="MaDieuKien" Type="varchar" MaxLength="50" Nullable="false" />
           <Property Name="MoTa" Type="text" />
         </EntityType>
-        <EntityType Name="Districts">
-          <Key>
-            <PropertyRef Name="DistrictId" />
-          </Key>
-          <Property Name="DistrictId" Type="varchar" MaxLength="20" Nullable="false" />
-          <Property Name="TenHuyen" Type="nvarchar" MaxLength="100" Nullable="false" />
-          <Property Name="ProvinceId" Type="varchar" MaxLength="20" />
-        </EntityType>
         <EntityType Name="DongVatChanNuoi">
           <Key>
             <PropertyRef Name="MaDV" />
           </Key>
           <Property Name="MaDV" Type="varchar" MaxLength="50" Nullable="false" />
           <Property Name="LoaiDV" Type="nvarchar" MaxLength="255" />
-          <Property Name="MaCoSoCN" Type="varchar" MaxLength="50" />
         </EntityType>
         <EntityType Name="GiayChungNhan">
           <Key>
@@ -110,6 +97,14 @@ warning 6013: The table/view 'Database.dbo.DICHBENHTAICOSOCN' does not have a pr
           <Property Name="MaCoSoCN" Type="varchar" MaxLength="50" />
           <Property Name="NgayCap" Type="date" />
           <Property Name="MaCoQuanCap" Type="varchar" MaxLength="50" />
+        </EntityType>
+        <EntityType Name="Huyen">
+          <Key>
+            <PropertyRef Name="DistrictId" />
+          </Key>
+          <Property Name="DistrictId" Type="varchar" MaxLength="20" Nullable="false" />
+          <Property Name="TenHuyen" Type="nvarchar" MaxLength="100" Nullable="false" />
+          <Property Name="ProvinceId" Type="varchar" MaxLength="20" />
         </EntityType>
         <EntityType Name="KhuTamGiu">
           <Key>
@@ -139,15 +134,8 @@ warning 6013: The table/view 'Database.dbo.DICHBENHTAICOSOCN' does not have a pr
           <Property Name="DistrictId" Type="varchar" MaxLength="20" />
           <Property Name="WardId" Type="varchar" MaxLength="20" />
         </EntityType>
-        <EntityType Name="Provinces">
-          <Key>
-            <PropertyRef Name="ProvinceId" />
-          </Key>
-          <Property Name="ProvinceId" Type="varchar" MaxLength="20" Nullable="false" />
-          <Property Name="TenTinh" Type="nvarchar" MaxLength="100" Nullable="false" />
-        </EntityType>
         <!--Errors Found During Generation:
-warning 6013: The table/view 'Database.dbo.QL_SP_XL_Chat_thai' does not have a primary key defined and no valid primary key could be inferred. This table/view has been excluded. To use the entity, you will need to review your schema, add the correct keys, and uncomment it.
+warning 6013: The table/view 'Check1.dbo.QL_SP_XL_Chat_thai' does not have a primary key defined and no valid primary key could be inferred. This table/view has been excluded. To use the entity, you will need to review your schema, add the correct keys, and uncomment it.
         <EntityType Name="QL_SP_XL_Chat_thai">
           <Property Name="IDSP" Type="varchar" MaxLength="20" />
           <Property Name="ID_CoSoSanXuatSPXLCT" Type="varchar" MaxLength="20" />
@@ -187,7 +175,18 @@ warning 6013: The table/view 'Database.dbo.QL_SP_XL_Chat_thai' does not have a p
           <Property Name="IDSP" Type="varchar" MaxLength="20" Nullable="false" />
           <Property Name="TenSP" Type="nvarchar" MaxLength="100" />
           <Property Name="LoaiSP" Type="varchar" MaxLength="100" />
-          <Property Name="HanSDSP" Type="int" />
+          <Property Name="NgaySX" Type="date" />
+          <Property Name="HanSD" Type="date" />
+        </EntityType>
+        <EntityType Name="sysdiagrams">
+          <Key>
+            <PropertyRef Name="diagram_id" />
+          </Key>
+          <Property Name="name" Type="nvarchar" MaxLength="128" Nullable="false" />
+          <Property Name="principal_id" Type="int" Nullable="false" />
+          <Property Name="diagram_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="version" Type="int" />
+          <Property Name="definition" Type="varbinary(max)" />
         </EntityType>
         <EntityType Name="ThongKeChanNuoiNhoLe">
           <Key>
@@ -208,6 +207,13 @@ warning 6013: The table/view 'Database.dbo.QL_SP_XL_Chat_thai' does not have a p
           <Property Name="HanSuDung" Type="date" />
           <Property Name="MaDV" Type="varchar" MaxLength="50" />
         </EntityType>
+        <EntityType Name="Tinh">
+          <Key>
+            <PropertyRef Name="ProvinceId" />
+          </Key>
+          <Property Name="ProvinceId" Type="varchar" MaxLength="20" Nullable="false" />
+          <Property Name="TenTinh" Type="nvarchar" MaxLength="100" Nullable="false" />
+        </EntityType>
         <EntityType Name="ToChucCaNhanChanNuoi">
           <Key>
             <PropertyRef Name="MaTCCN" />
@@ -225,7 +231,7 @@ warning 6013: The table/view 'Database.dbo.QL_SP_XL_Chat_thai' does not have a p
           <Property Name="TenVung" Type="nvarchar" MaxLength="255" />
           <Property Name="MucDoNguyHiem" Type="int" />
         </EntityType>
-        <EntityType Name="Wards">
+        <EntityType Name="Xa">
           <Key>
             <PropertyRef Name="WardId" />
           </Key>
@@ -233,7 +239,7 @@ warning 6013: The table/view 'Database.dbo.QL_SP_XL_Chat_thai' does not have a p
           <Property Name="TenXa" Type="nvarchar" MaxLength="100" Nullable="false" />
           <Property Name="DistrictId" Type="varchar" MaxLength="20" />
         </EntityType>
-        <Association Name="FK__CoQuanCap__MaLCS__628FA481">
+        <Association Name="FK__CoQuanCap__MaLCS__656C112C">
           <End Role="LoaiCoSo" Type="Self.LoaiCoSo" Multiplicity="0..1" />
           <End Role="CoQuanCapChungNhan" Type="Self.CoQuanCapChungNhan" Multiplicity="*" />
           <ReferentialConstraint>
@@ -245,7 +251,7 @@ warning 6013: The table/view 'Database.dbo.QL_SP_XL_Chat_thai' does not have a p
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__CoSoChanN__MaDie__5CD6CB2B">
+        <Association Name="FK__CoSoChanN__MaDie__628FA481">
           <End Role="DieuKienChanNuoi" Type="Self.DieuKienChanNuoi" Multiplicity="0..1" />
           <End Role="CoSoChanNuoi" Type="Self.CoSoChanNuoi" Multiplicity="*" />
           <ReferentialConstraint>
@@ -257,7 +263,19 @@ warning 6013: The table/view 'Database.dbo.QL_SP_XL_Chat_thai' does not have a p
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__CoSoChanN__MaLCS__59FA5E80">
+        <Association Name="FK__CoSoChanN__MaLCS__5DCAEF64">
+          <End Role="DichBenh" Type="Self.DichBenh" Multiplicity="0..1" />
+          <End Role="CoSoChanNuoi" Type="Self.CoSoChanNuoi" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="DichBenh">
+              <PropertyRef Name="MaDichBenh" />
+            </Principal>
+            <Dependent Role="CoSoChanNuoi">
+              <PropertyRef Name="MaDichBenh" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__CoSoChanN__MaLCS__5EBF139D">
           <End Role="LoaiCoSo" Type="Self.LoaiCoSo" Multiplicity="0..1" />
           <End Role="CoSoChanNuoi" Type="Self.CoSoChanNuoi" Multiplicity="*" />
           <ReferentialConstraint>
@@ -269,7 +287,7 @@ warning 6013: The table/view 'Database.dbo.QL_SP_XL_Chat_thai' does not have a p
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__CoSoChanN__MaTCC__5BE2A6F2">
+        <Association Name="FK__CoSoChanN__MaTCC__619B8048">
           <End Role="ToChucCaNhanChanNuoi" Type="Self.ToChucCaNhanChanNuoi" Multiplicity="0..1" />
           <End Role="CoSoChanNuoi" Type="Self.CoSoChanNuoi" Multiplicity="*" />
           <ReferentialConstraint>
@@ -281,7 +299,7 @@ warning 6013: The table/view 'Database.dbo.QL_SP_XL_Chat_thai' does not have a p
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__CoSoChanN__MaVun__5AEE82B9">
+        <Association Name="FK__CoSoChanN__MaVun__60A75C0F">
           <End Role="Vung" Type="Self.Vung" Multiplicity="0..1" />
           <End Role="CoSoChanNuoi" Type="Self.CoSoChanNuoi" Multiplicity="*" />
           <ReferentialConstraint>
@@ -290,6 +308,18 @@ warning 6013: The table/view 'Database.dbo.QL_SP_XL_Chat_thai' does not have a p
             </Principal>
             <Dependent Role="CoSoChanNuoi">
               <PropertyRef Name="MaVung" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__CoSoChanNu__MaDV__5FB337D6">
+          <End Role="DongVatChanNuoi" Type="Self.DongVatChanNuoi" Multiplicity="0..1" />
+          <End Role="CoSoChanNuoi" Type="Self.CoSoChanNuoi" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="DongVatChanNuoi">
+              <PropertyRef Name="MaDV" />
+            </Principal>
+            <Dependent Role="CoSoChanNuoi">
+              <PropertyRef Name="MaDV" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
@@ -317,7 +347,7 @@ warning 6013: The table/view 'Database.dbo.QL_SP_XL_Chat_thai' does not have a p
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__DaiLyThuo__MaLCS__7A672E12">
+        <Association Name="FK__DaiLyThuo__MaLCS__778AC167">
           <End Role="LoaiCoSo" Type="Self.LoaiCoSo" Multiplicity="0..1" />
           <End Role="DaiLyThuoc" Type="Self.DaiLyThuoc" Multiplicity="*" />
           <ReferentialConstraint>
@@ -329,37 +359,7 @@ warning 6013: The table/view 'Database.dbo.QL_SP_XL_Chat_thai' does not have a p
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <!--Errors Found During Generation:
-error 6004: The table 'Database.dbo.DICHBENHTAICOSOCN' is referenced by a relationship, but cannot be found.
-        <Association Name="FK__DICHBENHT__MaCoS__6A30C649" />-->
-        <!--Errors Found During Generation:
-error 6004: The table 'Database.dbo.DICHBENHTAICOSOCN' is referenced by a relationship, but cannot be found.
-        <Association Name="FK__DICHBENHT__MaDic__6B24EA82" />-->
-        <Association Name="FK__Districts__Provi__398D8EEE">
-          <End Role="Provinces" Type="Self.Provinces" Multiplicity="0..1" />
-          <End Role="Districts" Type="Self.Districts" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="Provinces">
-              <PropertyRef Name="ProvinceId" />
-            </Principal>
-            <Dependent Role="Districts">
-              <PropertyRef Name="ProvinceId" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK__DongVatCh__MaCoS__5FB337D6">
-          <End Role="CoSoChanNuoi" Type="Self.CoSoChanNuoi" Multiplicity="0..1" />
-          <End Role="DongVatChanNuoi" Type="Self.DongVatChanNuoi" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="CoSoChanNuoi">
-              <PropertyRef Name="MaCoSoCN" />
-            </Principal>
-            <Dependent Role="DongVatChanNuoi">
-              <PropertyRef Name="MaCoSoCN" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK__GiayChung__MaCoQ__66603565">
+        <Association Name="FK__GiayChung__MaCoQ__68487DD7">
           <End Role="CoQuanCapChungNhan" Type="Self.CoQuanCapChungNhan" Multiplicity="0..1" />
           <End Role="GiayChungNhan" Type="Self.GiayChungNhan" Multiplicity="*" />
           <ReferentialConstraint>
@@ -371,23 +371,23 @@ error 6004: The table 'Database.dbo.DICHBENHTAICOSOCN' is referenced by a relati
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__GiayChung__MaCoS__656C112C">
-          <End Role="CoSoChanNuoi" Type="Self.CoSoChanNuoi" Multiplicity="0..1" />
-          <End Role="GiayChungNhan" Type="Self.GiayChungNhan" Multiplicity="*" />
+        <Association Name="FK__Huyen__ProvinceI__398D8EEE">
+          <End Role="Tinh" Type="Self.Tinh" Multiplicity="0..1" />
+          <End Role="Huyen" Type="Self.Huyen" Multiplicity="*" />
           <ReferentialConstraint>
-            <Principal Role="CoSoChanNuoi">
-              <PropertyRef Name="MaCoSoCN" />
+            <Principal Role="Tinh">
+              <PropertyRef Name="ProvinceId" />
             </Principal>
-            <Dependent Role="GiayChungNhan">
-              <PropertyRef Name="MaCoSoCN" />
+            <Dependent Role="Huyen">
+              <PropertyRef Name="ProvinceId" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
         <Association Name="FK__Nguoi_dun__Distr__4316F928">
-          <End Role="Districts" Type="Self.Districts" Multiplicity="0..1" />
+          <End Role="Huyen" Type="Self.Huyen" Multiplicity="0..1" />
           <End Role="Nguoi_dung" Type="Self.Nguoi_dung" Multiplicity="*" />
           <ReferentialConstraint>
-            <Principal Role="Districts">
+            <Principal Role="Huyen">
               <PropertyRef Name="DistrictId" />
             </Principal>
             <Dependent Role="Nguoi_dung">
@@ -408,10 +408,10 @@ error 6004: The table 'Database.dbo.DICHBENHTAICOSOCN' is referenced by a relati
           </ReferentialConstraint>
         </Association>
         <Association Name="FK__Nguoi_dun__Provi__4222D4EF">
-          <End Role="Provinces" Type="Self.Provinces" Multiplicity="0..1" />
+          <End Role="Tinh" Type="Self.Tinh" Multiplicity="0..1" />
           <End Role="Nguoi_dung" Type="Self.Nguoi_dung" Multiplicity="*" />
           <ReferentialConstraint>
-            <Principal Role="Provinces">
+            <Principal Role="Tinh">
               <PropertyRef Name="ProvinceId" />
             </Principal>
             <Dependent Role="Nguoi_dung">
@@ -420,10 +420,10 @@ error 6004: The table 'Database.dbo.DICHBENHTAICOSOCN' is referenced by a relati
           </ReferentialConstraint>
         </Association>
         <Association Name="FK__Nguoi_dun__WardI__440B1D61">
-          <End Role="Wards" Type="Self.Wards" Multiplicity="0..1" />
+          <End Role="Xa" Type="Self.Xa" Multiplicity="0..1" />
           <End Role="Nguoi_dung" Type="Self.Nguoi_dung" Multiplicity="*" />
           <ReferentialConstraint>
-            <Principal Role="Wards">
+            <Principal Role="Xa">
               <PropertyRef Name="WardId" />
             </Principal>
             <Dependent Role="Nguoi_dung">
@@ -432,15 +432,15 @@ error 6004: The table 'Database.dbo.DICHBENHTAICOSOCN' is referenced by a relati
           </ReferentialConstraint>
         </Association>
         <!--Errors Found During Generation:
-error 6004: The table 'Database.dbo.QL_SP_XL_Chat_thai' is referenced by a relationship, but cannot be found.
+error 6004: The table 'Check1.dbo.QL_SP_XL_Chat_thai' is referenced by a relationship, but cannot be found.
         <Association Name="FK__QL_SP_XL___ID_Co__5165187F" />-->
         <!--Errors Found During Generation:
-error 6004: The table 'Database.dbo.QL_SP_XL_Chat_thai' is referenced by a relationship, but cannot be found.
+error 6004: The table 'Check1.dbo.QL_SP_XL_Chat_thai' is referenced by a relationship, but cannot be found.
         <Association Name="FK__QL_SP_XL___ID_Co__52593CB8" />-->
         <!--Errors Found During Generation:
-error 6004: The table 'Database.dbo.QL_SP_XL_Chat_thai' is referenced by a relationship, but cannot be found.
+error 6004: The table 'Check1.dbo.QL_SP_XL_Chat_thai' is referenced by a relationship, but cannot be found.
         <Association Name="FK__QL_SP_XL___ID_Co__534D60F1" />-->
-        <Association Name="FK__QuanLyChi__MaLCS__7D439ABD">
+        <Association Name="FK__QuanLyChi__MaLCS__7A672E12">
           <End Role="LoaiCoSo" Type="Self.LoaiCoSo" Multiplicity="0..1" />
           <End Role="QuanLyChiCucThuY" Type="Self.QuanLyChiCucThuY" Multiplicity="*" />
           <ReferentialConstraint>
@@ -452,7 +452,7 @@ error 6004: The table 'Database.dbo.QL_SP_XL_Chat_thai' is referenced by a relat
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__QuanLyChi__MaVun__7E37BEF6">
+        <Association Name="FK__QuanLyChi__MaVun__7B5B524B">
           <End Role="Vung" Type="Self.Vung" Multiplicity="0..1" />
           <End Role="QuanLyChiCucThuY" Type="Self.QuanLyChiCucThuY" Multiplicity="*" />
           <ReferentialConstraint>
@@ -464,7 +464,7 @@ error 6004: The table 'Database.dbo.QL_SP_XL_Chat_thai' is referenced by a relat
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__QuanLyDai__MaDai__01142BA1">
+        <Association Name="FK__QuanLyDai__MaDai__7E37BEF6">
           <End Role="DaiLyThuoc" Type="Self.DaiLyThuoc" Multiplicity="0..1" />
           <End Role="QuanLyDaiLyThuoc" Type="Self.QuanLyDaiLyThuoc" Multiplicity="*" />
           <ReferentialConstraint>
@@ -476,7 +476,7 @@ error 6004: The table 'Database.dbo.QL_SP_XL_Chat_thai' is referenced by a relat
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__QuanLyDai__MaThu__02084FDA">
+        <Association Name="FK__QuanLyDai__MaThu__7F2BE32F">
           <End Role="Thuoc" Type="Self.Thuoc" Multiplicity="0..1" />
           <End Role="QuanLyDaiLyThuoc" Type="Self.QuanLyDaiLyThuoc" Multiplicity="*" />
           <ReferentialConstraint>
@@ -488,7 +488,7 @@ error 6004: The table 'Database.dbo.QL_SP_XL_Chat_thai' is referenced by a relat
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__QuanLyTam__MaDic__74AE54BC">
+        <Association Name="FK__QuanLyTam__MaDic__71D1E811">
           <End Role="DichBenh" Type="Self.DichBenh" Multiplicity="0..1" />
           <End Role="QuanLyTamGiuTieuHuy" Type="Self.QuanLyTamGiuTieuHuy" Multiplicity="*" />
           <ReferentialConstraint>
@@ -500,7 +500,7 @@ error 6004: The table 'Database.dbo.QL_SP_XL_Chat_thai' is referenced by a relat
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__QuanLyTam__MaKhu__73BA3083">
+        <Association Name="FK__QuanLyTam__MaKhu__70DDC3D8">
           <End Role="KhuTamGiu" Type="Self.KhuTamGiu" Multiplicity="0..1" />
           <End Role="QuanLyTamGiuTieuHuy" Type="Self.QuanLyTamGiuTieuHuy" Multiplicity="*" />
           <ReferentialConstraint>
@@ -512,7 +512,7 @@ error 6004: The table 'Database.dbo.QL_SP_XL_Chat_thai' is referenced by a relat
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__ThongKeCh__MaTCC__6E01572D">
+        <Association Name="FK__ThongKeCh__MaTCC__6B24EA82">
           <End Role="ToChucCaNhanChanNuoi" Type="Self.ToChucCaNhanChanNuoi" Multiplicity="0..1" />
           <End Role="ThongKeChanNuoiNhoLe" Type="Self.ThongKeChanNuoiNhoLe" Multiplicity="*" />
           <ReferentialConstraint>
@@ -524,7 +524,7 @@ error 6004: The table 'Database.dbo.QL_SP_XL_Chat_thai' is referenced by a relat
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__ThongKeCha__MaDV__6EF57B66">
+        <Association Name="FK__ThongKeCha__MaDV__6C190EBB">
           <End Role="DongVatChanNuoi" Type="Self.DongVatChanNuoi" Multiplicity="0..1" />
           <End Role="ThongKeChanNuoiNhoLe" Type="Self.ThongKeChanNuoiNhoLe" Multiplicity="*" />
           <ReferentialConstraint>
@@ -536,7 +536,7 @@ error 6004: The table 'Database.dbo.QL_SP_XL_Chat_thai' is referenced by a relat
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__Thuoc__MaDV__778AC167">
+        <Association Name="FK__Thuoc__MaDV__74AE54BC">
           <End Role="DongVatChanNuoi" Type="Self.DongVatChanNuoi" Multiplicity="0..1" />
           <End Role="Thuoc" Type="Self.Thuoc" Multiplicity="*" />
           <ReferentialConstraint>
@@ -548,19 +548,19 @@ error 6004: The table 'Database.dbo.QL_SP_XL_Chat_thai' is referenced by a relat
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__Wards__DistrictI__3C69FB99">
-          <End Role="Districts" Type="Self.Districts" Multiplicity="0..1" />
-          <End Role="Wards" Type="Self.Wards" Multiplicity="*" />
+        <Association Name="FK__Xa__DistrictId__3C69FB99">
+          <End Role="Huyen" Type="Self.Huyen" Multiplicity="0..1" />
+          <End Role="Xa" Type="Self.Xa" Multiplicity="*" />
           <ReferentialConstraint>
-            <Principal Role="Districts">
+            <Principal Role="Huyen">
               <PropertyRef Name="DistrictId" />
             </Principal>
-            <Dependent Role="Wards">
+            <Dependent Role="Xa">
               <PropertyRef Name="DistrictId" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <EntityContainer Name="DatabaseModelStoreContainer">
+        <EntityContainer Name="Check1ModelStoreContainer">
           <EntitySet Name="Chuc_vu" EntityType="Self.Chuc_vu" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="CoQuanCapChungNhan" EntityType="Self.CoQuanCapChungNhan" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="CoSoChanNuoi" EntityType="Self.CoSoChanNuoi" Schema="dbo" store:Type="Tables" />
@@ -569,40 +569,49 @@ error 6004: The table 'Database.dbo.QL_SP_XL_Chat_thai' is referenced by a relat
           <EntitySet Name="DaiLyThuoc" EntityType="Self.DaiLyThuoc" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="DichBenh" EntityType="Self.DichBenh" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="DieuKienChanNuoi" EntityType="Self.DieuKienChanNuoi" Schema="dbo" store:Type="Tables" />
-          <EntitySet Name="Districts" EntityType="Self.Districts" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="DongVatChanNuoi" EntityType="Self.DongVatChanNuoi" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="GiayChungNhan" EntityType="Self.GiayChungNhan" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Huyen" EntityType="Self.Huyen" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="KhuTamGiu" EntityType="Self.KhuTamGiu" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="LoaiCoSo" EntityType="Self.LoaiCoSo" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Nguoi_dung" EntityType="Self.Nguoi_dung" Schema="dbo" store:Type="Tables" />
-          <EntitySet Name="Provinces" EntityType="Self.Provinces" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="QuanLyChiCucThuY" EntityType="Self.QuanLyChiCucThuY" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="QuanLyDaiLyThuoc" EntityType="Self.QuanLyDaiLyThuoc" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="QuanLyTamGiuTieuHuy" EntityType="Self.QuanLyTamGiuTieuHuy" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="SP_XL_chat_thai" EntityType="Self.SP_XL_chat_thai" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagrams" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="ThongKeChanNuoiNhoLe" EntityType="Self.ThongKeChanNuoiNhoLe" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Thuoc" EntityType="Self.Thuoc" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Tinh" EntityType="Self.Tinh" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="ToChucCaNhanChanNuoi" EntityType="Self.ToChucCaNhanChanNuoi" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Vung" EntityType="Self.Vung" Schema="dbo" store:Type="Tables" />
-          <EntitySet Name="Wards" EntityType="Self.Wards" Schema="dbo" store:Type="Tables" />
-          <AssociationSet Name="FK__CoQuanCap__MaLCS__628FA481" Association="Self.FK__CoQuanCap__MaLCS__628FA481">
+          <EntitySet Name="Xa" EntityType="Self.Xa" Schema="dbo" store:Type="Tables" />
+          <AssociationSet Name="FK__CoQuanCap__MaLCS__656C112C" Association="Self.FK__CoQuanCap__MaLCS__656C112C">
             <End Role="LoaiCoSo" EntitySet="LoaiCoSo" />
             <End Role="CoQuanCapChungNhan" EntitySet="CoQuanCapChungNhan" />
           </AssociationSet>
-          <AssociationSet Name="FK__CoSoChanN__MaDie__5CD6CB2B" Association="Self.FK__CoSoChanN__MaDie__5CD6CB2B">
+          <AssociationSet Name="FK__CoSoChanN__MaDie__628FA481" Association="Self.FK__CoSoChanN__MaDie__628FA481">
             <End Role="DieuKienChanNuoi" EntitySet="DieuKienChanNuoi" />
             <End Role="CoSoChanNuoi" EntitySet="CoSoChanNuoi" />
           </AssociationSet>
-          <AssociationSet Name="FK__CoSoChanN__MaLCS__59FA5E80" Association="Self.FK__CoSoChanN__MaLCS__59FA5E80">
+          <AssociationSet Name="FK__CoSoChanN__MaLCS__5DCAEF64" Association="Self.FK__CoSoChanN__MaLCS__5DCAEF64">
+            <End Role="DichBenh" EntitySet="DichBenh" />
+            <End Role="CoSoChanNuoi" EntitySet="CoSoChanNuoi" />
+          </AssociationSet>
+          <AssociationSet Name="FK__CoSoChanN__MaLCS__5EBF139D" Association="Self.FK__CoSoChanN__MaLCS__5EBF139D">
             <End Role="LoaiCoSo" EntitySet="LoaiCoSo" />
             <End Role="CoSoChanNuoi" EntitySet="CoSoChanNuoi" />
           </AssociationSet>
-          <AssociationSet Name="FK__CoSoChanN__MaTCC__5BE2A6F2" Association="Self.FK__CoSoChanN__MaTCC__5BE2A6F2">
+          <AssociationSet Name="FK__CoSoChanN__MaTCC__619B8048" Association="Self.FK__CoSoChanN__MaTCC__619B8048">
             <End Role="ToChucCaNhanChanNuoi" EntitySet="ToChucCaNhanChanNuoi" />
             <End Role="CoSoChanNuoi" EntitySet="CoSoChanNuoi" />
           </AssociationSet>
-          <AssociationSet Name="FK__CoSoChanN__MaVun__5AEE82B9" Association="Self.FK__CoSoChanN__MaVun__5AEE82B9">
+          <AssociationSet Name="FK__CoSoChanN__MaVun__60A75C0F" Association="Self.FK__CoSoChanN__MaVun__60A75C0F">
             <End Role="Vung" EntitySet="Vung" />
+            <End Role="CoSoChanNuoi" EntitySet="CoSoChanNuoi" />
+          </AssociationSet>
+          <AssociationSet Name="FK__CoSoChanNu__MaDV__5FB337D6" Association="Self.FK__CoSoChanNu__MaDV__5FB337D6">
+            <End Role="DongVatChanNuoi" EntitySet="DongVatChanNuoi" />
             <End Role="CoSoChanNuoi" EntitySet="CoSoChanNuoi" />
           </AssociationSet>
           <AssociationSet Name="FK__CoSoKhaoN__MaLCS__4F7CD00D" Association="Self.FK__CoSoKhaoN__MaLCS__4F7CD00D">
@@ -613,28 +622,20 @@ error 6004: The table 'Database.dbo.QL_SP_XL_Chat_thai' is referenced by a relat
             <End Role="LoaiCoSo" EntitySet="LoaiCoSo" />
             <End Role="CoSoSanXuatSPXLCT" EntitySet="CoSoSanXuatSPXLCT" />
           </AssociationSet>
-          <AssociationSet Name="FK__DaiLyThuo__MaLCS__7A672E12" Association="Self.FK__DaiLyThuo__MaLCS__7A672E12">
+          <AssociationSet Name="FK__DaiLyThuo__MaLCS__778AC167" Association="Self.FK__DaiLyThuo__MaLCS__778AC167">
             <End Role="LoaiCoSo" EntitySet="LoaiCoSo" />
             <End Role="DaiLyThuoc" EntitySet="DaiLyThuoc" />
           </AssociationSet>
-          <AssociationSet Name="FK__Districts__Provi__398D8EEE" Association="Self.FK__Districts__Provi__398D8EEE">
-            <End Role="Provinces" EntitySet="Provinces" />
-            <End Role="Districts" EntitySet="Districts" />
-          </AssociationSet>
-          <AssociationSet Name="FK__DongVatCh__MaCoS__5FB337D6" Association="Self.FK__DongVatCh__MaCoS__5FB337D6">
-            <End Role="CoSoChanNuoi" EntitySet="CoSoChanNuoi" />
-            <End Role="DongVatChanNuoi" EntitySet="DongVatChanNuoi" />
-          </AssociationSet>
-          <AssociationSet Name="FK__GiayChung__MaCoQ__66603565" Association="Self.FK__GiayChung__MaCoQ__66603565">
+          <AssociationSet Name="FK__GiayChung__MaCoQ__68487DD7" Association="Self.FK__GiayChung__MaCoQ__68487DD7">
             <End Role="CoQuanCapChungNhan" EntitySet="CoQuanCapChungNhan" />
             <End Role="GiayChungNhan" EntitySet="GiayChungNhan" />
           </AssociationSet>
-          <AssociationSet Name="FK__GiayChung__MaCoS__656C112C" Association="Self.FK__GiayChung__MaCoS__656C112C">
-            <End Role="CoSoChanNuoi" EntitySet="CoSoChanNuoi" />
-            <End Role="GiayChungNhan" EntitySet="GiayChungNhan" />
+          <AssociationSet Name="FK__Huyen__ProvinceI__398D8EEE" Association="Self.FK__Huyen__ProvinceI__398D8EEE">
+            <End Role="Tinh" EntitySet="Tinh" />
+            <End Role="Huyen" EntitySet="Huyen" />
           </AssociationSet>
           <AssociationSet Name="FK__Nguoi_dun__Distr__4316F928" Association="Self.FK__Nguoi_dun__Distr__4316F928">
-            <End Role="Districts" EntitySet="Districts" />
+            <End Role="Huyen" EntitySet="Huyen" />
             <End Role="Nguoi_dung" EntitySet="Nguoi_dung" />
           </AssociationSet>
           <AssociationSet Name="FK__Nguoi_dun__IdRol__412EB0B6" Association="Self.FK__Nguoi_dun__IdRol__412EB0B6">
@@ -642,59 +643,59 @@ error 6004: The table 'Database.dbo.QL_SP_XL_Chat_thai' is referenced by a relat
             <End Role="Nguoi_dung" EntitySet="Nguoi_dung" />
           </AssociationSet>
           <AssociationSet Name="FK__Nguoi_dun__Provi__4222D4EF" Association="Self.FK__Nguoi_dun__Provi__4222D4EF">
-            <End Role="Provinces" EntitySet="Provinces" />
+            <End Role="Tinh" EntitySet="Tinh" />
             <End Role="Nguoi_dung" EntitySet="Nguoi_dung" />
           </AssociationSet>
           <AssociationSet Name="FK__Nguoi_dun__WardI__440B1D61" Association="Self.FK__Nguoi_dun__WardI__440B1D61">
-            <End Role="Wards" EntitySet="Wards" />
+            <End Role="Xa" EntitySet="Xa" />
             <End Role="Nguoi_dung" EntitySet="Nguoi_dung" />
           </AssociationSet>
-          <AssociationSet Name="FK__QuanLyChi__MaLCS__7D439ABD" Association="Self.FK__QuanLyChi__MaLCS__7D439ABD">
+          <AssociationSet Name="FK__QuanLyChi__MaLCS__7A672E12" Association="Self.FK__QuanLyChi__MaLCS__7A672E12">
             <End Role="LoaiCoSo" EntitySet="LoaiCoSo" />
             <End Role="QuanLyChiCucThuY" EntitySet="QuanLyChiCucThuY" />
           </AssociationSet>
-          <AssociationSet Name="FK__QuanLyChi__MaVun__7E37BEF6" Association="Self.FK__QuanLyChi__MaVun__7E37BEF6">
+          <AssociationSet Name="FK__QuanLyChi__MaVun__7B5B524B" Association="Self.FK__QuanLyChi__MaVun__7B5B524B">
             <End Role="Vung" EntitySet="Vung" />
             <End Role="QuanLyChiCucThuY" EntitySet="QuanLyChiCucThuY" />
           </AssociationSet>
-          <AssociationSet Name="FK__QuanLyDai__MaDai__01142BA1" Association="Self.FK__QuanLyDai__MaDai__01142BA1">
+          <AssociationSet Name="FK__QuanLyDai__MaDai__7E37BEF6" Association="Self.FK__QuanLyDai__MaDai__7E37BEF6">
             <End Role="DaiLyThuoc" EntitySet="DaiLyThuoc" />
             <End Role="QuanLyDaiLyThuoc" EntitySet="QuanLyDaiLyThuoc" />
           </AssociationSet>
-          <AssociationSet Name="FK__QuanLyDai__MaThu__02084FDA" Association="Self.FK__QuanLyDai__MaThu__02084FDA">
+          <AssociationSet Name="FK__QuanLyDai__MaThu__7F2BE32F" Association="Self.FK__QuanLyDai__MaThu__7F2BE32F">
             <End Role="Thuoc" EntitySet="Thuoc" />
             <End Role="QuanLyDaiLyThuoc" EntitySet="QuanLyDaiLyThuoc" />
           </AssociationSet>
-          <AssociationSet Name="FK__QuanLyTam__MaDic__74AE54BC" Association="Self.FK__QuanLyTam__MaDic__74AE54BC">
+          <AssociationSet Name="FK__QuanLyTam__MaDic__71D1E811" Association="Self.FK__QuanLyTam__MaDic__71D1E811">
             <End Role="DichBenh" EntitySet="DichBenh" />
             <End Role="QuanLyTamGiuTieuHuy" EntitySet="QuanLyTamGiuTieuHuy" />
           </AssociationSet>
-          <AssociationSet Name="FK__QuanLyTam__MaKhu__73BA3083" Association="Self.FK__QuanLyTam__MaKhu__73BA3083">
+          <AssociationSet Name="FK__QuanLyTam__MaKhu__70DDC3D8" Association="Self.FK__QuanLyTam__MaKhu__70DDC3D8">
             <End Role="KhuTamGiu" EntitySet="KhuTamGiu" />
             <End Role="QuanLyTamGiuTieuHuy" EntitySet="QuanLyTamGiuTieuHuy" />
           </AssociationSet>
-          <AssociationSet Name="FK__ThongKeCh__MaTCC__6E01572D" Association="Self.FK__ThongKeCh__MaTCC__6E01572D">
+          <AssociationSet Name="FK__ThongKeCh__MaTCC__6B24EA82" Association="Self.FK__ThongKeCh__MaTCC__6B24EA82">
             <End Role="ToChucCaNhanChanNuoi" EntitySet="ToChucCaNhanChanNuoi" />
             <End Role="ThongKeChanNuoiNhoLe" EntitySet="ThongKeChanNuoiNhoLe" />
           </AssociationSet>
-          <AssociationSet Name="FK__ThongKeCha__MaDV__6EF57B66" Association="Self.FK__ThongKeCha__MaDV__6EF57B66">
+          <AssociationSet Name="FK__ThongKeCha__MaDV__6C190EBB" Association="Self.FK__ThongKeCha__MaDV__6C190EBB">
             <End Role="DongVatChanNuoi" EntitySet="DongVatChanNuoi" />
             <End Role="ThongKeChanNuoiNhoLe" EntitySet="ThongKeChanNuoiNhoLe" />
           </AssociationSet>
-          <AssociationSet Name="FK__Thuoc__MaDV__778AC167" Association="Self.FK__Thuoc__MaDV__778AC167">
+          <AssociationSet Name="FK__Thuoc__MaDV__74AE54BC" Association="Self.FK__Thuoc__MaDV__74AE54BC">
             <End Role="DongVatChanNuoi" EntitySet="DongVatChanNuoi" />
             <End Role="Thuoc" EntitySet="Thuoc" />
           </AssociationSet>
-          <AssociationSet Name="FK__Wards__DistrictI__3C69FB99" Association="Self.FK__Wards__DistrictI__3C69FB99">
-            <End Role="Districts" EntitySet="Districts" />
-            <End Role="Wards" EntitySet="Wards" />
+          <AssociationSet Name="FK__Xa__DistrictId__3C69FB99" Association="Self.FK__Xa__DistrictId__3C69FB99">
+            <End Role="Huyen" EntitySet="Huyen" />
+            <End Role="Xa" EntitySet="Xa" />
           </AssociationSet>
         </EntityContainer>
       </Schema>
     </edmx:StorageModels>
     <!-- CSDL content -->
     <edmx:ConceptualModels>
-      <Schema Namespace="DatabaseModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+      <Schema Namespace="Check1Model" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
         <EntityType Name="Chuc_vu">
           <Key>
             <PropertyRef Name="IdRole" />
@@ -712,8 +713,8 @@ error 6004: The table 'Database.dbo.QL_SP_XL_Chat_thai' is referenced by a relat
           <Property Name="DiaChiCoQuanCap" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
           <Property Name="SdtCoQuanCap" Type="String" MaxLength="10" FixedLength="true" Unicode="false" />
           <Property Name="MaLCS" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
-          <NavigationProperty Name="LoaiCoSo" Relationship="Self.FK__CoQuanCap__MaLCS__628FA481" FromRole="CoQuanCapChungNhan" ToRole="LoaiCoSo" />
-          <NavigationProperty Name="GiayChungNhans" Relationship="Self.FK__GiayChung__MaCoQ__66603565" FromRole="CoQuanCapChungNhan" ToRole="GiayChungNhan" />
+          <NavigationProperty Name="LoaiCoSo" Relationship="Self.FK__CoQuanCap__MaLCS__656C112C" FromRole="CoQuanCapChungNhan" ToRole="LoaiCoSo" />
+          <NavigationProperty Name="GiayChungNhans" Relationship="Self.FK__GiayChung__MaCoQ__68487DD7" FromRole="CoQuanCapChungNhan" ToRole="GiayChungNhan" />
         </EntityType>
         <EntityType Name="CoSoChanNuoi">
           <Key>
@@ -725,13 +726,15 @@ error 6004: The table 'Database.dbo.QL_SP_XL_Chat_thai' is referenced by a relat
           <Property Name="MaTCCN" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
           <Property Name="DiaChiCSCN" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
           <Property Name="MaDieuKien" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="MaDV" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="MaDichBenh" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
           <Property Name="MaLCS" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
-          <NavigationProperty Name="DieuKienChanNuoi" Relationship="Self.FK__CoSoChanN__MaDie__5CD6CB2B" FromRole="CoSoChanNuoi" ToRole="DieuKienChanNuoi" />
-          <NavigationProperty Name="LoaiCoSo" Relationship="Self.FK__CoSoChanN__MaLCS__59FA5E80" FromRole="CoSoChanNuoi" ToRole="LoaiCoSo" />
-          <NavigationProperty Name="ToChucCaNhanChanNuoi" Relationship="Self.FK__CoSoChanN__MaTCC__5BE2A6F2" FromRole="CoSoChanNuoi" ToRole="ToChucCaNhanChanNuoi" />
-          <NavigationProperty Name="Vung" Relationship="Self.FK__CoSoChanN__MaVun__5AEE82B9" FromRole="CoSoChanNuoi" ToRole="Vung" />
-          <NavigationProperty Name="DongVatChanNuois" Relationship="Self.FK__DongVatCh__MaCoS__5FB337D6" FromRole="CoSoChanNuoi" ToRole="DongVatChanNuoi" />
-          <NavigationProperty Name="GiayChungNhans" Relationship="Self.FK__GiayChung__MaCoS__656C112C" FromRole="CoSoChanNuoi" ToRole="GiayChungNhan" />
+          <NavigationProperty Name="DieuKienChanNuoi" Relationship="Self.FK__CoSoChanN__MaDie__628FA481" FromRole="CoSoChanNuoi" ToRole="DieuKienChanNuoi" />
+          <NavigationProperty Name="DichBenh" Relationship="Self.FK__CoSoChanN__MaLCS__5DCAEF64" FromRole="CoSoChanNuoi" ToRole="DichBenh" />
+          <NavigationProperty Name="LoaiCoSo" Relationship="Self.FK__CoSoChanN__MaLCS__5EBF139D" FromRole="CoSoChanNuoi" ToRole="LoaiCoSo" />
+          <NavigationProperty Name="ToChucCaNhanChanNuoi" Relationship="Self.FK__CoSoChanN__MaTCC__619B8048" FromRole="CoSoChanNuoi" ToRole="ToChucCaNhanChanNuoi" />
+          <NavigationProperty Name="Vung" Relationship="Self.FK__CoSoChanN__MaVun__60A75C0F" FromRole="CoSoChanNuoi" ToRole="Vung" />
+          <NavigationProperty Name="DongVatChanNuoi" Relationship="Self.FK__CoSoChanNu__MaDV__5FB337D6" FromRole="CoSoChanNuoi" ToRole="DongVatChanNuoi" />
         </EntityType>
         <EntityType Name="CoSoKhaoNghiemSPXLCT">
           <Key>
@@ -763,8 +766,8 @@ error 6004: The table 'Database.dbo.QL_SP_XL_Chat_thai' is referenced by a relat
           <Property Name="TenDaiLy" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
           <Property Name="DiaChi" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
           <Property Name="MaLCS" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
-          <NavigationProperty Name="LoaiCoSo" Relationship="Self.FK__DaiLyThuo__MaLCS__7A672E12" FromRole="DaiLyThuoc" ToRole="LoaiCoSo" />
-          <NavigationProperty Name="QuanLyDaiLyThuocs" Relationship="Self.FK__QuanLyDai__MaDai__01142BA1" FromRole="DaiLyThuoc" ToRole="QuanLyDaiLyThuoc" />
+          <NavigationProperty Name="LoaiCoSo" Relationship="Self.FK__DaiLyThuo__MaLCS__778AC167" FromRole="DaiLyThuoc" ToRole="LoaiCoSo" />
+          <NavigationProperty Name="QuanLyDaiLyThuocs" Relationship="Self.FK__QuanLyDai__MaDai__7E37BEF6" FromRole="DaiLyThuoc" ToRole="QuanLyDaiLyThuoc" />
         </EntityType>
         <EntityType Name="DichBenh">
           <Key>
@@ -774,7 +777,8 @@ error 6004: The table 'Database.dbo.QL_SP_XL_Chat_thai' is referenced by a relat
           <Property Name="TenDichBenh" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
           <Property Name="MucDoNguyHiem" Type="Int32" />
           <Property Name="CachXuLy" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
-          <NavigationProperty Name="QuanLyTamGiuTieuHuys" Relationship="Self.FK__QuanLyTam__MaDic__74AE54BC" FromRole="DichBenh" ToRole="QuanLyTamGiuTieuHuy" />
+          <NavigationProperty Name="CoSoChanNuois" Relationship="Self.FK__CoSoChanN__MaLCS__5DCAEF64" FromRole="DichBenh" ToRole="CoSoChanNuoi" />
+          <NavigationProperty Name="QuanLyTamGiuTieuHuys" Relationship="Self.FK__QuanLyTam__MaDic__71D1E811" FromRole="DichBenh" ToRole="QuanLyTamGiuTieuHuy" />
         </EntityType>
         <EntityType Name="DieuKienChanNuoi">
           <Key>
@@ -782,18 +786,7 @@ error 6004: The table 'Database.dbo.QL_SP_XL_Chat_thai' is referenced by a relat
           </Key>
           <Property Name="MaDieuKien" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
           <Property Name="MoTa" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
-          <NavigationProperty Name="CoSoChanNuois" Relationship="Self.FK__CoSoChanN__MaDie__5CD6CB2B" FromRole="DieuKienChanNuoi" ToRole="CoSoChanNuoi" />
-        </EntityType>
-        <EntityType Name="District">
-          <Key>
-            <PropertyRef Name="DistrictId" />
-          </Key>
-          <Property Name="DistrictId" Type="String" MaxLength="20" FixedLength="false" Unicode="false" Nullable="false" />
-          <Property Name="TenHuyen" Type="String" MaxLength="100" FixedLength="false" Unicode="true" Nullable="false" />
-          <Property Name="ProvinceId" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
-          <NavigationProperty Name="Province" Relationship="Self.FK__Districts__Provi__398D8EEE" FromRole="Districts" ToRole="Provinces" />
-          <NavigationProperty Name="Nguoi_dung" Relationship="Self.FK__Nguoi_dun__Distr__4316F928" FromRole="Districts" ToRole="Nguoi_dung" />
-          <NavigationProperty Name="Wards" Relationship="Self.FK__Wards__DistrictI__3C69FB99" FromRole="Districts" ToRole="Wards" />
+          <NavigationProperty Name="CoSoChanNuois" Relationship="Self.FK__CoSoChanN__MaDie__628FA481" FromRole="DieuKienChanNuoi" ToRole="CoSoChanNuoi" />
         </EntityType>
         <EntityType Name="DongVatChanNuoi">
           <Key>
@@ -801,10 +794,9 @@ error 6004: The table 'Database.dbo.QL_SP_XL_Chat_thai' is referenced by a relat
           </Key>
           <Property Name="MaDV" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
           <Property Name="LoaiDV" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
-          <Property Name="MaCoSoCN" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
-          <NavigationProperty Name="CoSoChanNuoi" Relationship="Self.FK__DongVatCh__MaCoS__5FB337D6" FromRole="DongVatChanNuoi" ToRole="CoSoChanNuoi" />
-          <NavigationProperty Name="ThongKeChanNuoiNhoLes" Relationship="Self.FK__ThongKeCha__MaDV__6EF57B66" FromRole="DongVatChanNuoi" ToRole="ThongKeChanNuoiNhoLe" />
-          <NavigationProperty Name="Thuocs" Relationship="Self.FK__Thuoc__MaDV__778AC167" FromRole="DongVatChanNuoi" ToRole="Thuoc" />
+          <NavigationProperty Name="CoSoChanNuois" Relationship="Self.FK__CoSoChanNu__MaDV__5FB337D6" FromRole="DongVatChanNuoi" ToRole="CoSoChanNuoi" />
+          <NavigationProperty Name="ThongKeChanNuoiNhoLes" Relationship="Self.FK__ThongKeCha__MaDV__6C190EBB" FromRole="DongVatChanNuoi" ToRole="ThongKeChanNuoiNhoLe" />
+          <NavigationProperty Name="Thuocs" Relationship="Self.FK__Thuoc__MaDV__74AE54BC" FromRole="DongVatChanNuoi" ToRole="Thuoc" />
         </EntityType>
         <EntityType Name="GiayChungNhan">
           <Key>
@@ -815,8 +807,18 @@ error 6004: The table 'Database.dbo.QL_SP_XL_Chat_thai' is referenced by a relat
           <Property Name="MaCoSoCN" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
           <Property Name="NgayCap" Type="DateTime" Precision="0" />
           <Property Name="MaCoQuanCap" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
-          <NavigationProperty Name="CoQuanCapChungNhan" Relationship="Self.FK__GiayChung__MaCoQ__66603565" FromRole="GiayChungNhan" ToRole="CoQuanCapChungNhan" />
-          <NavigationProperty Name="CoSoChanNuoi" Relationship="Self.FK__GiayChung__MaCoS__656C112C" FromRole="GiayChungNhan" ToRole="CoSoChanNuoi" />
+          <NavigationProperty Name="CoQuanCapChungNhan" Relationship="Self.FK__GiayChung__MaCoQ__68487DD7" FromRole="GiayChungNhan" ToRole="CoQuanCapChungNhan" />
+        </EntityType>
+        <EntityType Name="Huyen">
+          <Key>
+            <PropertyRef Name="DistrictId" />
+          </Key>
+          <Property Name="DistrictId" Type="String" MaxLength="20" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="TenHuyen" Type="String" MaxLength="100" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="ProvinceId" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="Tinh" Relationship="Self.FK__Huyen__ProvinceI__398D8EEE" FromRole="Huyen" ToRole="Tinh" />
+          <NavigationProperty Name="Nguoi_dung" Relationship="Self.FK__Nguoi_dun__Distr__4316F928" FromRole="Huyen" ToRole="Nguoi_dung" />
+          <NavigationProperty Name="Xas" Relationship="Self.FK__Xa__DistrictId__3C69FB99" FromRole="Huyen" ToRole="Xa" />
         </EntityType>
         <EntityType Name="KhuTamGiu">
           <Key>
@@ -825,7 +827,7 @@ error 6004: The table 'Database.dbo.QL_SP_XL_Chat_thai' is referenced by a relat
           <Property Name="MaKhu" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
           <Property Name="TenKhu" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
           <Property Name="DiaChiKhu" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
-          <NavigationProperty Name="QuanLyTamGiuTieuHuys" Relationship="Self.FK__QuanLyTam__MaKhu__73BA3083" FromRole="KhuTamGiu" ToRole="QuanLyTamGiuTieuHuy" />
+          <NavigationProperty Name="QuanLyTamGiuTieuHuys" Relationship="Self.FK__QuanLyTam__MaKhu__70DDC3D8" FromRole="KhuTamGiu" ToRole="QuanLyTamGiuTieuHuy" />
         </EntityType>
         <EntityType Name="LoaiCoSo">
           <Key>
@@ -833,12 +835,12 @@ error 6004: The table 'Database.dbo.QL_SP_XL_Chat_thai' is referenced by a relat
           </Key>
           <Property Name="MaLCS" Type="String" MaxLength="20" FixedLength="false" Unicode="false" Nullable="false" />
           <Property Name="TenLCS" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
-          <NavigationProperty Name="CoQuanCapChungNhans" Relationship="Self.FK__CoQuanCap__MaLCS__628FA481" FromRole="LoaiCoSo" ToRole="CoQuanCapChungNhan" />
-          <NavigationProperty Name="CoSoChanNuois" Relationship="Self.FK__CoSoChanN__MaLCS__59FA5E80" FromRole="LoaiCoSo" ToRole="CoSoChanNuoi" />
+          <NavigationProperty Name="CoQuanCapChungNhans" Relationship="Self.FK__CoQuanCap__MaLCS__656C112C" FromRole="LoaiCoSo" ToRole="CoQuanCapChungNhan" />
+          <NavigationProperty Name="CoSoChanNuois" Relationship="Self.FK__CoSoChanN__MaLCS__5EBF139D" FromRole="LoaiCoSo" ToRole="CoSoChanNuoi" />
           <NavigationProperty Name="CoSoKhaoNghiemSPXLCTs" Relationship="Self.FK__CoSoKhaoN__MaLCS__4F7CD00D" FromRole="LoaiCoSo" ToRole="CoSoKhaoNghiemSPXLCT" />
           <NavigationProperty Name="CoSoSanXuatSPXLCTs" Relationship="Self.FK__CoSoSanXu__MaLCS__4CA06362" FromRole="LoaiCoSo" ToRole="CoSoSanXuatSPXLCT" />
-          <NavigationProperty Name="DaiLyThuocs" Relationship="Self.FK__DaiLyThuo__MaLCS__7A672E12" FromRole="LoaiCoSo" ToRole="DaiLyThuoc" />
-          <NavigationProperty Name="QuanLyChiCucThuYs" Relationship="Self.FK__QuanLyChi__MaLCS__7D439ABD" FromRole="LoaiCoSo" ToRole="QuanLyChiCucThuY" />
+          <NavigationProperty Name="DaiLyThuocs" Relationship="Self.FK__DaiLyThuo__MaLCS__778AC167" FromRole="LoaiCoSo" ToRole="DaiLyThuoc" />
+          <NavigationProperty Name="QuanLyChiCucThuYs" Relationship="Self.FK__QuanLyChi__MaLCS__7A672E12" FromRole="LoaiCoSo" ToRole="QuanLyChiCucThuY" />
         </EntityType>
         <EntityType Name="Nguoi_dung">
           <Key>
@@ -853,18 +855,9 @@ error 6004: The table 'Database.dbo.QL_SP_XL_Chat_thai' is referenced by a relat
           <Property Name="DistrictId" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
           <Property Name="WardId" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
           <NavigationProperty Name="Chuc_vu" Relationship="Self.FK__Nguoi_dun__IdRol__412EB0B6" FromRole="Nguoi_dung" ToRole="Chuc_vu" />
-          <NavigationProperty Name="District" Relationship="Self.FK__Nguoi_dun__Distr__4316F928" FromRole="Nguoi_dung" ToRole="Districts" />
-          <NavigationProperty Name="Province" Relationship="Self.FK__Nguoi_dun__Provi__4222D4EF" FromRole="Nguoi_dung" ToRole="Provinces" />
-          <NavigationProperty Name="Ward" Relationship="Self.FK__Nguoi_dun__WardI__440B1D61" FromRole="Nguoi_dung" ToRole="Wards" />
-        </EntityType>
-        <EntityType Name="Province">
-          <Key>
-            <PropertyRef Name="ProvinceId" />
-          </Key>
-          <Property Name="ProvinceId" Type="String" MaxLength="20" FixedLength="false" Unicode="false" Nullable="false" />
-          <Property Name="TenTinh" Type="String" MaxLength="100" FixedLength="false" Unicode="true" Nullable="false" />
-          <NavigationProperty Name="Districts" Relationship="Self.FK__Districts__Provi__398D8EEE" FromRole="Provinces" ToRole="Districts" />
-          <NavigationProperty Name="Nguoi_dung" Relationship="Self.FK__Nguoi_dun__Provi__4222D4EF" FromRole="Provinces" ToRole="Nguoi_dung" />
+          <NavigationProperty Name="Huyen" Relationship="Self.FK__Nguoi_dun__Distr__4316F928" FromRole="Nguoi_dung" ToRole="Huyen" />
+          <NavigationProperty Name="Tinh" Relationship="Self.FK__Nguoi_dun__Provi__4222D4EF" FromRole="Nguoi_dung" ToRole="Tinh" />
+          <NavigationProperty Name="Xa" Relationship="Self.FK__Nguoi_dun__WardI__440B1D61" FromRole="Nguoi_dung" ToRole="Xa" />
         </EntityType>
         <EntityType Name="QuanLyChiCucThuY">
           <Key>
@@ -874,8 +867,8 @@ error 6004: The table 'Database.dbo.QL_SP_XL_Chat_thai' is referenced by a relat
           <Property Name="TenCCTY" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
           <Property Name="MaVung" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
           <Property Name="MaLCS" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
-          <NavigationProperty Name="LoaiCoSo" Relationship="Self.FK__QuanLyChi__MaLCS__7D439ABD" FromRole="QuanLyChiCucThuY" ToRole="LoaiCoSo" />
-          <NavigationProperty Name="Vung" Relationship="Self.FK__QuanLyChi__MaVun__7E37BEF6" FromRole="QuanLyChiCucThuY" ToRole="Vung" />
+          <NavigationProperty Name="LoaiCoSo" Relationship="Self.FK__QuanLyChi__MaLCS__7A672E12" FromRole="QuanLyChiCucThuY" ToRole="LoaiCoSo" />
+          <NavigationProperty Name="Vung" Relationship="Self.FK__QuanLyChi__MaVun__7B5B524B" FromRole="QuanLyChiCucThuY" ToRole="Vung" />
         </EntityType>
         <EntityType Name="QuanLyDaiLyThuoc">
           <Key>
@@ -885,8 +878,8 @@ error 6004: The table 'Database.dbo.QL_SP_XL_Chat_thai' is referenced by a relat
           <Property Name="MaDaiLy" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
           <Property Name="MaThuoc" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
           <Property Name="SoLuong" Type="Int32" />
-          <NavigationProperty Name="DaiLyThuoc" Relationship="Self.FK__QuanLyDai__MaDai__01142BA1" FromRole="QuanLyDaiLyThuoc" ToRole="DaiLyThuoc" />
-          <NavigationProperty Name="Thuoc" Relationship="Self.FK__QuanLyDai__MaThu__02084FDA" FromRole="QuanLyDaiLyThuoc" ToRole="Thuoc" />
+          <NavigationProperty Name="DaiLyThuoc" Relationship="Self.FK__QuanLyDai__MaDai__7E37BEF6" FromRole="QuanLyDaiLyThuoc" ToRole="DaiLyThuoc" />
+          <NavigationProperty Name="Thuoc" Relationship="Self.FK__QuanLyDai__MaThu__7F2BE32F" FromRole="QuanLyDaiLyThuoc" ToRole="Thuoc" />
         </EntityType>
         <EntityType Name="QuanLyTamGiuTieuHuy">
           <Key>
@@ -896,8 +889,8 @@ error 6004: The table 'Database.dbo.QL_SP_XL_Chat_thai' is referenced by a relat
           <Property Name="MaKhu" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
           <Property Name="MaDichBenh" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
           <Property Name="SoLuong" Type="Int32" />
-          <NavigationProperty Name="DichBenh" Relationship="Self.FK__QuanLyTam__MaDic__74AE54BC" FromRole="QuanLyTamGiuTieuHuy" ToRole="DichBenh" />
-          <NavigationProperty Name="KhuTamGiu" Relationship="Self.FK__QuanLyTam__MaKhu__73BA3083" FromRole="QuanLyTamGiuTieuHuy" ToRole="KhuTamGiu" />
+          <NavigationProperty Name="DichBenh" Relationship="Self.FK__QuanLyTam__MaDic__71D1E811" FromRole="QuanLyTamGiuTieuHuy" ToRole="DichBenh" />
+          <NavigationProperty Name="KhuTamGiu" Relationship="Self.FK__QuanLyTam__MaKhu__70DDC3D8" FromRole="QuanLyTamGiuTieuHuy" ToRole="KhuTamGiu" />
         </EntityType>
         <EntityType Name="SP_XL_chat_thai">
           <Key>
@@ -906,7 +899,18 @@ error 6004: The table 'Database.dbo.QL_SP_XL_Chat_thai' is referenced by a relat
           <Property Name="IDSP" Type="String" MaxLength="20" FixedLength="false" Unicode="false" Nullable="false" />
           <Property Name="TenSP" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
           <Property Name="LoaiSP" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
-          <Property Name="HanSDSP" Type="Int32" />
+          <Property Name="NgaySX" Type="DateTime" Precision="0" />
+          <Property Name="HanSD" Type="DateTime" Precision="0" />
+        </EntityType>
+        <EntityType Name="sysdiagram">
+          <Key>
+            <PropertyRef Name="diagram_id" />
+          </Key>
+          <Property Name="name" Type="String" MaxLength="128" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="principal_id" Type="Int32" Nullable="false" />
+          <Property Name="diagram_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="version" Type="Int32" />
+          <Property Name="definition" Type="Binary" MaxLength="Max" FixedLength="false" />
         </EntityType>
         <EntityType Name="ThongKeChanNuoiNhoLe">
           <Key>
@@ -917,8 +921,8 @@ error 6004: The table 'Database.dbo.QL_SP_XL_Chat_thai' is referenced by a relat
           <Property Name="MaDV" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
           <Property Name="SoLuong" Type="Int32" />
           <Property Name="NgayThongKe" Type="DateTime" Precision="0" />
-          <NavigationProperty Name="DongVatChanNuoi" Relationship="Self.FK__ThongKeCha__MaDV__6EF57B66" FromRole="ThongKeChanNuoiNhoLe" ToRole="DongVatChanNuoi" />
-          <NavigationProperty Name="ToChucCaNhanChanNuoi" Relationship="Self.FK__ThongKeCh__MaTCC__6E01572D" FromRole="ThongKeChanNuoiNhoLe" ToRole="ToChucCaNhanChanNuoi" />
+          <NavigationProperty Name="DongVatChanNuoi" Relationship="Self.FK__ThongKeCha__MaDV__6C190EBB" FromRole="ThongKeChanNuoiNhoLe" ToRole="DongVatChanNuoi" />
+          <NavigationProperty Name="ToChucCaNhanChanNuoi" Relationship="Self.FK__ThongKeCh__MaTCC__6B24EA82" FromRole="ThongKeChanNuoiNhoLe" ToRole="ToChucCaNhanChanNuoi" />
         </EntityType>
         <EntityType Name="Thuoc">
           <Key>
@@ -928,8 +932,17 @@ error 6004: The table 'Database.dbo.QL_SP_XL_Chat_thai' is referenced by a relat
           <Property Name="TenThuoc" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
           <Property Name="HanSuDung" Type="DateTime" Precision="0" />
           <Property Name="MaDV" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
-          <NavigationProperty Name="DongVatChanNuoi" Relationship="Self.FK__Thuoc__MaDV__778AC167" FromRole="Thuoc" ToRole="DongVatChanNuoi" />
-          <NavigationProperty Name="QuanLyDaiLyThuocs" Relationship="Self.FK__QuanLyDai__MaThu__02084FDA" FromRole="Thuoc" ToRole="QuanLyDaiLyThuoc" />
+          <NavigationProperty Name="DongVatChanNuoi" Relationship="Self.FK__Thuoc__MaDV__74AE54BC" FromRole="Thuoc" ToRole="DongVatChanNuoi" />
+          <NavigationProperty Name="QuanLyDaiLyThuocs" Relationship="Self.FK__QuanLyDai__MaThu__7F2BE32F" FromRole="Thuoc" ToRole="QuanLyDaiLyThuoc" />
+        </EntityType>
+        <EntityType Name="Tinh">
+          <Key>
+            <PropertyRef Name="ProvinceId" />
+          </Key>
+          <Property Name="ProvinceId" Type="String" MaxLength="20" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="TenTinh" Type="String" MaxLength="100" FixedLength="false" Unicode="true" Nullable="false" />
+          <NavigationProperty Name="Huyens" Relationship="Self.FK__Huyen__ProvinceI__398D8EEE" FromRole="Tinh" ToRole="Huyen" />
+          <NavigationProperty Name="Nguoi_dung" Relationship="Self.FK__Nguoi_dun__Provi__4222D4EF" FromRole="Tinh" ToRole="Nguoi_dung" />
         </EntityType>
         <EntityType Name="ToChucCaNhanChanNuoi">
           <Key>
@@ -939,8 +952,8 @@ error 6004: The table 'Database.dbo.QL_SP_XL_Chat_thai' is referenced by a relat
           <Property Name="TenTCCN" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
           <Property Name="LoaiTCCN" Type="String" MaxLength="2" FixedLength="false" Unicode="false" />
           <Property Name="SdtTCCN" Type="String" MaxLength="10" FixedLength="true" Unicode="false" />
-          <NavigationProperty Name="CoSoChanNuois" Relationship="Self.FK__CoSoChanN__MaTCC__5BE2A6F2" FromRole="ToChucCaNhanChanNuoi" ToRole="CoSoChanNuoi" />
-          <NavigationProperty Name="ThongKeChanNuoiNhoLes" Relationship="Self.FK__ThongKeCh__MaTCC__6E01572D" FromRole="ToChucCaNhanChanNuoi" ToRole="ThongKeChanNuoiNhoLe" />
+          <NavigationProperty Name="CoSoChanNuois" Relationship="Self.FK__CoSoChanN__MaTCC__619B8048" FromRole="ToChucCaNhanChanNuoi" ToRole="CoSoChanNuoi" />
+          <NavigationProperty Name="ThongKeChanNuoiNhoLes" Relationship="Self.FK__ThongKeCh__MaTCC__6B24EA82" FromRole="ToChucCaNhanChanNuoi" ToRole="ThongKeChanNuoiNhoLe" />
         </EntityType>
         <EntityType Name="Vung">
           <Key>
@@ -949,18 +962,18 @@ error 6004: The table 'Database.dbo.QL_SP_XL_Chat_thai' is referenced by a relat
           <Property Name="MaVung" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
           <Property Name="TenVung" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
           <Property Name="MucDoNguyHiem" Type="Int32" />
-          <NavigationProperty Name="CoSoChanNuois" Relationship="Self.FK__CoSoChanN__MaVun__5AEE82B9" FromRole="Vung" ToRole="CoSoChanNuoi" />
-          <NavigationProperty Name="QuanLyChiCucThuYs" Relationship="Self.FK__QuanLyChi__MaVun__7E37BEF6" FromRole="Vung" ToRole="QuanLyChiCucThuY" />
+          <NavigationProperty Name="CoSoChanNuois" Relationship="Self.FK__CoSoChanN__MaVun__60A75C0F" FromRole="Vung" ToRole="CoSoChanNuoi" />
+          <NavigationProperty Name="QuanLyChiCucThuYs" Relationship="Self.FK__QuanLyChi__MaVun__7B5B524B" FromRole="Vung" ToRole="QuanLyChiCucThuY" />
         </EntityType>
-        <EntityType Name="Ward">
+        <EntityType Name="Xa">
           <Key>
             <PropertyRef Name="WardId" />
           </Key>
           <Property Name="WardId" Type="String" MaxLength="20" FixedLength="false" Unicode="false" Nullable="false" />
           <Property Name="TenXa" Type="String" MaxLength="100" FixedLength="false" Unicode="true" Nullable="false" />
           <Property Name="DistrictId" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
-          <NavigationProperty Name="District" Relationship="Self.FK__Wards__DistrictI__3C69FB99" FromRole="Wards" ToRole="Districts" />
-          <NavigationProperty Name="Nguoi_dung" Relationship="Self.FK__Nguoi_dun__WardI__440B1D61" FromRole="Wards" ToRole="Nguoi_dung" />
+          <NavigationProperty Name="Huyen" Relationship="Self.FK__Xa__DistrictId__3C69FB99" FromRole="Xa" ToRole="Huyen" />
+          <NavigationProperty Name="Nguoi_dung" Relationship="Self.FK__Nguoi_dun__WardI__440B1D61" FromRole="Xa" ToRole="Nguoi_dung" />
         </EntityType>
         <Association Name="FK__Nguoi_dun__IdRol__412EB0B6">
           <End Role="Chuc_vu" Type="Self.Chuc_vu" Multiplicity="0..1" />
@@ -974,7 +987,7 @@ error 6004: The table 'Database.dbo.QL_SP_XL_Chat_thai' is referenced by a relat
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__CoQuanCap__MaLCS__628FA481">
+        <Association Name="FK__CoQuanCap__MaLCS__656C112C">
           <End Role="LoaiCoSo" Type="Self.LoaiCoSo" Multiplicity="0..1" />
           <End Role="CoQuanCapChungNhan" Type="Self.CoQuanCapChungNhan" Multiplicity="*" />
           <ReferentialConstraint>
@@ -986,7 +999,7 @@ error 6004: The table 'Database.dbo.QL_SP_XL_Chat_thai' is referenced by a relat
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__GiayChung__MaCoQ__66603565">
+        <Association Name="FK__GiayChung__MaCoQ__68487DD7">
           <End Role="CoQuanCapChungNhan" Type="Self.CoQuanCapChungNhan" Multiplicity="0..1" />
           <End Role="GiayChungNhan" Type="Self.GiayChungNhan" Multiplicity="*" />
           <ReferentialConstraint>
@@ -998,7 +1011,7 @@ error 6004: The table 'Database.dbo.QL_SP_XL_Chat_thai' is referenced by a relat
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__CoSoChanN__MaDie__5CD6CB2B">
+        <Association Name="FK__CoSoChanN__MaDie__628FA481">
           <End Role="DieuKienChanNuoi" Type="Self.DieuKienChanNuoi" Multiplicity="0..1" />
           <End Role="CoSoChanNuoi" Type="Self.CoSoChanNuoi" Multiplicity="*" />
           <ReferentialConstraint>
@@ -1010,7 +1023,19 @@ error 6004: The table 'Database.dbo.QL_SP_XL_Chat_thai' is referenced by a relat
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__CoSoChanN__MaLCS__59FA5E80">
+        <Association Name="FK__CoSoChanN__MaLCS__5DCAEF64">
+          <End Role="DichBenh" Type="Self.DichBenh" Multiplicity="0..1" />
+          <End Role="CoSoChanNuoi" Type="Self.CoSoChanNuoi" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="DichBenh">
+              <PropertyRef Name="MaDichBenh" />
+            </Principal>
+            <Dependent Role="CoSoChanNuoi">
+              <PropertyRef Name="MaDichBenh" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__CoSoChanN__MaLCS__5EBF139D">
           <End Role="LoaiCoSo" Type="Self.LoaiCoSo" Multiplicity="0..1" />
           <End Role="CoSoChanNuoi" Type="Self.CoSoChanNuoi" Multiplicity="*" />
           <ReferentialConstraint>
@@ -1022,7 +1047,7 @@ error 6004: The table 'Database.dbo.QL_SP_XL_Chat_thai' is referenced by a relat
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__CoSoChanN__MaTCC__5BE2A6F2">
+        <Association Name="FK__CoSoChanN__MaTCC__619B8048">
           <End Role="ToChucCaNhanChanNuoi" Type="Self.ToChucCaNhanChanNuoi" Multiplicity="0..1" />
           <End Role="CoSoChanNuoi" Type="Self.CoSoChanNuoi" Multiplicity="*" />
           <ReferentialConstraint>
@@ -1034,7 +1059,7 @@ error 6004: The table 'Database.dbo.QL_SP_XL_Chat_thai' is referenced by a relat
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__CoSoChanN__MaVun__5AEE82B9">
+        <Association Name="FK__CoSoChanN__MaVun__60A75C0F">
           <End Role="Vung" Type="Self.Vung" Multiplicity="0..1" />
           <End Role="CoSoChanNuoi" Type="Self.CoSoChanNuoi" Multiplicity="*" />
           <ReferentialConstraint>
@@ -1046,27 +1071,15 @@ error 6004: The table 'Database.dbo.QL_SP_XL_Chat_thai' is referenced by a relat
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__DongVatCh__MaCoS__5FB337D6">
-          <End Role="CoSoChanNuoi" Type="Self.CoSoChanNuoi" Multiplicity="0..1" />
-          <End Role="DongVatChanNuoi" Type="Self.DongVatChanNuoi" Multiplicity="*" />
+        <Association Name="FK__CoSoChanNu__MaDV__5FB337D6">
+          <End Role="DongVatChanNuoi" Type="Self.DongVatChanNuoi" Multiplicity="0..1" />
+          <End Role="CoSoChanNuoi" Type="Self.CoSoChanNuoi" Multiplicity="*" />
           <ReferentialConstraint>
-            <Principal Role="CoSoChanNuoi">
-              <PropertyRef Name="MaCoSoCN" />
+            <Principal Role="DongVatChanNuoi">
+              <PropertyRef Name="MaDV" />
             </Principal>
-            <Dependent Role="DongVatChanNuoi">
-              <PropertyRef Name="MaCoSoCN" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK__GiayChung__MaCoS__656C112C">
-          <End Role="CoSoChanNuoi" Type="Self.CoSoChanNuoi" Multiplicity="0..1" />
-          <End Role="GiayChungNhan" Type="Self.GiayChungNhan" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="CoSoChanNuoi">
-              <PropertyRef Name="MaCoSoCN" />
-            </Principal>
-            <Dependent Role="GiayChungNhan">
-              <PropertyRef Name="MaCoSoCN" />
+            <Dependent Role="CoSoChanNuoi">
+              <PropertyRef Name="MaDV" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
@@ -1094,7 +1107,7 @@ error 6004: The table 'Database.dbo.QL_SP_XL_Chat_thai' is referenced by a relat
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__DaiLyThuo__MaLCS__7A672E12">
+        <Association Name="FK__DaiLyThuo__MaLCS__778AC167">
           <End Role="LoaiCoSo" Type="Self.LoaiCoSo" Multiplicity="0..1" />
           <End Role="DaiLyThuoc" Type="Self.DaiLyThuoc" Multiplicity="*" />
           <ReferentialConstraint>
@@ -1106,7 +1119,7 @@ error 6004: The table 'Database.dbo.QL_SP_XL_Chat_thai' is referenced by a relat
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__QuanLyDai__MaDai__01142BA1">
+        <Association Name="FK__QuanLyDai__MaDai__7E37BEF6">
           <End Role="DaiLyThuoc" Type="Self.DaiLyThuoc" Multiplicity="0..1" />
           <End Role="QuanLyDaiLyThuoc" Type="Self.QuanLyDaiLyThuoc" Multiplicity="*" />
           <ReferentialConstraint>
@@ -1118,7 +1131,7 @@ error 6004: The table 'Database.dbo.QL_SP_XL_Chat_thai' is referenced by a relat
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__QuanLyTam__MaDic__74AE54BC">
+        <Association Name="FK__QuanLyTam__MaDic__71D1E811">
           <End Role="DichBenh" Type="Self.DichBenh" Multiplicity="0..1" />
           <End Role="QuanLyTamGiuTieuHuy" Type="Self.QuanLyTamGiuTieuHuy" Multiplicity="*" />
           <ReferentialConstraint>
@@ -1130,43 +1143,7 @@ error 6004: The table 'Database.dbo.QL_SP_XL_Chat_thai' is referenced by a relat
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__Districts__Provi__398D8EEE">
-          <End Role="Provinces" Type="Self.Province" Multiplicity="0..1" />
-          <End Role="Districts" Type="Self.District" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="Provinces">
-              <PropertyRef Name="ProvinceId" />
-            </Principal>
-            <Dependent Role="Districts">
-              <PropertyRef Name="ProvinceId" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK__Nguoi_dun__Distr__4316F928">
-          <End Role="Districts" Type="Self.District" Multiplicity="0..1" />
-          <End Role="Nguoi_dung" Type="Self.Nguoi_dung" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="Districts">
-              <PropertyRef Name="DistrictId" />
-            </Principal>
-            <Dependent Role="Nguoi_dung">
-              <PropertyRef Name="DistrictId" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK__Wards__DistrictI__3C69FB99">
-          <End Role="Districts" Type="Self.District" Multiplicity="0..1" />
-          <End Role="Wards" Type="Self.Ward" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="Districts">
-              <PropertyRef Name="DistrictId" />
-            </Principal>
-            <Dependent Role="Wards">
-              <PropertyRef Name="DistrictId" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK__ThongKeCha__MaDV__6EF57B66">
+        <Association Name="FK__ThongKeCha__MaDV__6C190EBB">
           <End Role="DongVatChanNuoi" Type="Self.DongVatChanNuoi" Multiplicity="0..1" />
           <End Role="ThongKeChanNuoiNhoLe" Type="Self.ThongKeChanNuoiNhoLe" Multiplicity="*" />
           <ReferentialConstraint>
@@ -1178,7 +1155,7 @@ error 6004: The table 'Database.dbo.QL_SP_XL_Chat_thai' is referenced by a relat
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__Thuoc__MaDV__778AC167">
+        <Association Name="FK__Thuoc__MaDV__74AE54BC">
           <End Role="DongVatChanNuoi" Type="Self.DongVatChanNuoi" Multiplicity="0..1" />
           <End Role="Thuoc" Type="Self.Thuoc" Multiplicity="*" />
           <ReferentialConstraint>
@@ -1190,7 +1167,43 @@ error 6004: The table 'Database.dbo.QL_SP_XL_Chat_thai' is referenced by a relat
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__QuanLyTam__MaKhu__73BA3083">
+        <Association Name="FK__Huyen__ProvinceI__398D8EEE">
+          <End Role="Tinh" Type="Self.Tinh" Multiplicity="0..1" />
+          <End Role="Huyen" Type="Self.Huyen" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Tinh">
+              <PropertyRef Name="ProvinceId" />
+            </Principal>
+            <Dependent Role="Huyen">
+              <PropertyRef Name="ProvinceId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Nguoi_dun__Distr__4316F928">
+          <End Role="Huyen" Type="Self.Huyen" Multiplicity="0..1" />
+          <End Role="Nguoi_dung" Type="Self.Nguoi_dung" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Huyen">
+              <PropertyRef Name="DistrictId" />
+            </Principal>
+            <Dependent Role="Nguoi_dung">
+              <PropertyRef Name="DistrictId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Xa__DistrictId__3C69FB99">
+          <End Role="Huyen" Type="Self.Huyen" Multiplicity="0..1" />
+          <End Role="Xa" Type="Self.Xa" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Huyen">
+              <PropertyRef Name="DistrictId" />
+            </Principal>
+            <Dependent Role="Xa">
+              <PropertyRef Name="DistrictId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__QuanLyTam__MaKhu__70DDC3D8">
           <End Role="KhuTamGiu" Type="Self.KhuTamGiu" Multiplicity="0..1" />
           <End Role="QuanLyTamGiuTieuHuy" Type="Self.QuanLyTamGiuTieuHuy" Multiplicity="*" />
           <ReferentialConstraint>
@@ -1202,7 +1215,7 @@ error 6004: The table 'Database.dbo.QL_SP_XL_Chat_thai' is referenced by a relat
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__QuanLyChi__MaLCS__7D439ABD">
+        <Association Name="FK__QuanLyChi__MaLCS__7A672E12">
           <End Role="LoaiCoSo" Type="Self.LoaiCoSo" Multiplicity="0..1" />
           <End Role="QuanLyChiCucThuY" Type="Self.QuanLyChiCucThuY" Multiplicity="*" />
           <ReferentialConstraint>
@@ -1215,10 +1228,10 @@ error 6004: The table 'Database.dbo.QL_SP_XL_Chat_thai' is referenced by a relat
           </ReferentialConstraint>
         </Association>
         <Association Name="FK__Nguoi_dun__Provi__4222D4EF">
-          <End Role="Provinces" Type="Self.Province" Multiplicity="0..1" />
+          <End Role="Tinh" Type="Self.Tinh" Multiplicity="0..1" />
           <End Role="Nguoi_dung" Type="Self.Nguoi_dung" Multiplicity="*" />
           <ReferentialConstraint>
-            <Principal Role="Provinces">
+            <Principal Role="Tinh">
               <PropertyRef Name="ProvinceId" />
             </Principal>
             <Dependent Role="Nguoi_dung">
@@ -1227,10 +1240,10 @@ error 6004: The table 'Database.dbo.QL_SP_XL_Chat_thai' is referenced by a relat
           </ReferentialConstraint>
         </Association>
         <Association Name="FK__Nguoi_dun__WardI__440B1D61">
-          <End Role="Wards" Type="Self.Ward" Multiplicity="0..1" />
+          <End Role="Xa" Type="Self.Xa" Multiplicity="0..1" />
           <End Role="Nguoi_dung" Type="Self.Nguoi_dung" Multiplicity="*" />
           <ReferentialConstraint>
-            <Principal Role="Wards">
+            <Principal Role="Xa">
               <PropertyRef Name="WardId" />
             </Principal>
             <Dependent Role="Nguoi_dung">
@@ -1238,7 +1251,7 @@ error 6004: The table 'Database.dbo.QL_SP_XL_Chat_thai' is referenced by a relat
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__QuanLyChi__MaVun__7E37BEF6">
+        <Association Name="FK__QuanLyChi__MaVun__7B5B524B">
           <End Role="Vung" Type="Self.Vung" Multiplicity="0..1" />
           <End Role="QuanLyChiCucThuY" Type="Self.QuanLyChiCucThuY" Multiplicity="*" />
           <ReferentialConstraint>
@@ -1250,7 +1263,7 @@ error 6004: The table 'Database.dbo.QL_SP_XL_Chat_thai' is referenced by a relat
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__QuanLyDai__MaThu__02084FDA">
+        <Association Name="FK__QuanLyDai__MaThu__7F2BE32F">
           <End Role="Thuoc" Type="Self.Thuoc" Multiplicity="0..1" />
           <End Role="QuanLyDaiLyThuoc" Type="Self.QuanLyDaiLyThuoc" Multiplicity="*" />
           <ReferentialConstraint>
@@ -1262,7 +1275,7 @@ error 6004: The table 'Database.dbo.QL_SP_XL_Chat_thai' is referenced by a relat
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__ThongKeCh__MaTCC__6E01572D">
+        <Association Name="FK__ThongKeCh__MaTCC__6B24EA82">
           <End Role="ToChucCaNhanChanNuoi" Type="Self.ToChucCaNhanChanNuoi" Multiplicity="0..1" />
           <End Role="ThongKeChanNuoiNhoLe" Type="Self.ThongKeChanNuoiNhoLe" Multiplicity="*" />
           <ReferentialConstraint>
@@ -1274,7 +1287,7 @@ error 6004: The table 'Database.dbo.QL_SP_XL_Chat_thai' is referenced by a relat
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <EntityContainer Name="DatabaseEntities" annotation:LazyLoadingEnabled="true">
+        <EntityContainer Name="Check1Entities" annotation:LazyLoadingEnabled="true">
           <EntitySet Name="Chuc_vu" EntityType="Self.Chuc_vu" />
           <EntitySet Name="CoQuanCapChungNhans" EntityType="Self.CoQuanCapChungNhan" />
           <EntitySet Name="CoSoChanNuois" EntityType="Self.CoSoChanNuoi" />
@@ -1283,57 +1296,58 @@ error 6004: The table 'Database.dbo.QL_SP_XL_Chat_thai' is referenced by a relat
           <EntitySet Name="DaiLyThuocs" EntityType="Self.DaiLyThuoc" />
           <EntitySet Name="DichBenhs" EntityType="Self.DichBenh" />
           <EntitySet Name="DieuKienChanNuois" EntityType="Self.DieuKienChanNuoi" />
-          <EntitySet Name="Districts" EntityType="Self.District" />
           <EntitySet Name="DongVatChanNuois" EntityType="Self.DongVatChanNuoi" />
           <EntitySet Name="GiayChungNhans" EntityType="Self.GiayChungNhan" />
+          <EntitySet Name="Huyens" EntityType="Self.Huyen" />
           <EntitySet Name="KhuTamGius" EntityType="Self.KhuTamGiu" />
           <EntitySet Name="LoaiCoSoes" EntityType="Self.LoaiCoSo" />
           <EntitySet Name="Nguoi_dung" EntityType="Self.Nguoi_dung" />
-          <EntitySet Name="Provinces" EntityType="Self.Province" />
           <EntitySet Name="QuanLyChiCucThuYs" EntityType="Self.QuanLyChiCucThuY" />
           <EntitySet Name="QuanLyDaiLyThuocs" EntityType="Self.QuanLyDaiLyThuoc" />
           <EntitySet Name="QuanLyTamGiuTieuHuys" EntityType="Self.QuanLyTamGiuTieuHuy" />
           <EntitySet Name="SP_XL_chat_thai" EntityType="Self.SP_XL_chat_thai" />
+          <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagram" />
           <EntitySet Name="ThongKeChanNuoiNhoLes" EntityType="Self.ThongKeChanNuoiNhoLe" />
           <EntitySet Name="Thuocs" EntityType="Self.Thuoc" />
+          <EntitySet Name="Tinhs" EntityType="Self.Tinh" />
           <EntitySet Name="ToChucCaNhanChanNuois" EntityType="Self.ToChucCaNhanChanNuoi" />
           <EntitySet Name="Vungs" EntityType="Self.Vung" />
-          <EntitySet Name="Wards" EntityType="Self.Ward" />
+          <EntitySet Name="Xas" EntityType="Self.Xa" />
           <AssociationSet Name="FK__Nguoi_dun__IdRol__412EB0B6" Association="Self.FK__Nguoi_dun__IdRol__412EB0B6">
             <End Role="Chuc_vu" EntitySet="Chuc_vu" />
             <End Role="Nguoi_dung" EntitySet="Nguoi_dung" />
           </AssociationSet>
-          <AssociationSet Name="FK__CoQuanCap__MaLCS__628FA481" Association="Self.FK__CoQuanCap__MaLCS__628FA481">
+          <AssociationSet Name="FK__CoQuanCap__MaLCS__656C112C" Association="Self.FK__CoQuanCap__MaLCS__656C112C">
             <End Role="LoaiCoSo" EntitySet="LoaiCoSoes" />
             <End Role="CoQuanCapChungNhan" EntitySet="CoQuanCapChungNhans" />
           </AssociationSet>
-          <AssociationSet Name="FK__GiayChung__MaCoQ__66603565" Association="Self.FK__GiayChung__MaCoQ__66603565">
+          <AssociationSet Name="FK__GiayChung__MaCoQ__68487DD7" Association="Self.FK__GiayChung__MaCoQ__68487DD7">
             <End Role="CoQuanCapChungNhan" EntitySet="CoQuanCapChungNhans" />
             <End Role="GiayChungNhan" EntitySet="GiayChungNhans" />
           </AssociationSet>
-          <AssociationSet Name="FK__CoSoChanN__MaDie__5CD6CB2B" Association="Self.FK__CoSoChanN__MaDie__5CD6CB2B">
+          <AssociationSet Name="FK__CoSoChanN__MaDie__628FA481" Association="Self.FK__CoSoChanN__MaDie__628FA481">
             <End Role="DieuKienChanNuoi" EntitySet="DieuKienChanNuois" />
             <End Role="CoSoChanNuoi" EntitySet="CoSoChanNuois" />
           </AssociationSet>
-          <AssociationSet Name="FK__CoSoChanN__MaLCS__59FA5E80" Association="Self.FK__CoSoChanN__MaLCS__59FA5E80">
+          <AssociationSet Name="FK__CoSoChanN__MaLCS__5DCAEF64" Association="Self.FK__CoSoChanN__MaLCS__5DCAEF64">
+            <End Role="DichBenh" EntitySet="DichBenhs" />
+            <End Role="CoSoChanNuoi" EntitySet="CoSoChanNuois" />
+          </AssociationSet>
+          <AssociationSet Name="FK__CoSoChanN__MaLCS__5EBF139D" Association="Self.FK__CoSoChanN__MaLCS__5EBF139D">
             <End Role="LoaiCoSo" EntitySet="LoaiCoSoes" />
             <End Role="CoSoChanNuoi" EntitySet="CoSoChanNuois" />
           </AssociationSet>
-          <AssociationSet Name="FK__CoSoChanN__MaTCC__5BE2A6F2" Association="Self.FK__CoSoChanN__MaTCC__5BE2A6F2">
+          <AssociationSet Name="FK__CoSoChanN__MaTCC__619B8048" Association="Self.FK__CoSoChanN__MaTCC__619B8048">
             <End Role="ToChucCaNhanChanNuoi" EntitySet="ToChucCaNhanChanNuois" />
             <End Role="CoSoChanNuoi" EntitySet="CoSoChanNuois" />
           </AssociationSet>
-          <AssociationSet Name="FK__CoSoChanN__MaVun__5AEE82B9" Association="Self.FK__CoSoChanN__MaVun__5AEE82B9">
+          <AssociationSet Name="FK__CoSoChanN__MaVun__60A75C0F" Association="Self.FK__CoSoChanN__MaVun__60A75C0F">
             <End Role="Vung" EntitySet="Vungs" />
             <End Role="CoSoChanNuoi" EntitySet="CoSoChanNuois" />
           </AssociationSet>
-          <AssociationSet Name="FK__DongVatCh__MaCoS__5FB337D6" Association="Self.FK__DongVatCh__MaCoS__5FB337D6">
-            <End Role="CoSoChanNuoi" EntitySet="CoSoChanNuois" />
+          <AssociationSet Name="FK__CoSoChanNu__MaDV__5FB337D6" Association="Self.FK__CoSoChanNu__MaDV__5FB337D6">
             <End Role="DongVatChanNuoi" EntitySet="DongVatChanNuois" />
-          </AssociationSet>
-          <AssociationSet Name="FK__GiayChung__MaCoS__656C112C" Association="Self.FK__GiayChung__MaCoS__656C112C">
             <End Role="CoSoChanNuoi" EntitySet="CoSoChanNuois" />
-            <End Role="GiayChungNhan" EntitySet="GiayChungNhans" />
           </AssociationSet>
           <AssociationSet Name="FK__CoSoKhaoN__MaLCS__4F7CD00D" Association="Self.FK__CoSoKhaoN__MaLCS__4F7CD00D">
             <End Role="LoaiCoSo" EntitySet="LoaiCoSoes" />
@@ -1343,63 +1357,63 @@ error 6004: The table 'Database.dbo.QL_SP_XL_Chat_thai' is referenced by a relat
             <End Role="LoaiCoSo" EntitySet="LoaiCoSoes" />
             <End Role="CoSoSanXuatSPXLCT" EntitySet="CoSoSanXuatSPXLCTs" />
           </AssociationSet>
-          <AssociationSet Name="FK__DaiLyThuo__MaLCS__7A672E12" Association="Self.FK__DaiLyThuo__MaLCS__7A672E12">
+          <AssociationSet Name="FK__DaiLyThuo__MaLCS__778AC167" Association="Self.FK__DaiLyThuo__MaLCS__778AC167">
             <End Role="LoaiCoSo" EntitySet="LoaiCoSoes" />
             <End Role="DaiLyThuoc" EntitySet="DaiLyThuocs" />
           </AssociationSet>
-          <AssociationSet Name="FK__QuanLyDai__MaDai__01142BA1" Association="Self.FK__QuanLyDai__MaDai__01142BA1">
+          <AssociationSet Name="FK__QuanLyDai__MaDai__7E37BEF6" Association="Self.FK__QuanLyDai__MaDai__7E37BEF6">
             <End Role="DaiLyThuoc" EntitySet="DaiLyThuocs" />
             <End Role="QuanLyDaiLyThuoc" EntitySet="QuanLyDaiLyThuocs" />
           </AssociationSet>
-          <AssociationSet Name="FK__QuanLyTam__MaDic__74AE54BC" Association="Self.FK__QuanLyTam__MaDic__74AE54BC">
+          <AssociationSet Name="FK__QuanLyTam__MaDic__71D1E811" Association="Self.FK__QuanLyTam__MaDic__71D1E811">
             <End Role="DichBenh" EntitySet="DichBenhs" />
             <End Role="QuanLyTamGiuTieuHuy" EntitySet="QuanLyTamGiuTieuHuys" />
           </AssociationSet>
-          <AssociationSet Name="FK__Districts__Provi__398D8EEE" Association="Self.FK__Districts__Provi__398D8EEE">
-            <End Role="Provinces" EntitySet="Provinces" />
-            <End Role="Districts" EntitySet="Districts" />
-          </AssociationSet>
-          <AssociationSet Name="FK__Nguoi_dun__Distr__4316F928" Association="Self.FK__Nguoi_dun__Distr__4316F928">
-            <End Role="Districts" EntitySet="Districts" />
-            <End Role="Nguoi_dung" EntitySet="Nguoi_dung" />
-          </AssociationSet>
-          <AssociationSet Name="FK__Wards__DistrictI__3C69FB99" Association="Self.FK__Wards__DistrictI__3C69FB99">
-            <End Role="Districts" EntitySet="Districts" />
-            <End Role="Wards" EntitySet="Wards" />
-          </AssociationSet>
-          <AssociationSet Name="FK__ThongKeCha__MaDV__6EF57B66" Association="Self.FK__ThongKeCha__MaDV__6EF57B66">
+          <AssociationSet Name="FK__ThongKeCha__MaDV__6C190EBB" Association="Self.FK__ThongKeCha__MaDV__6C190EBB">
             <End Role="DongVatChanNuoi" EntitySet="DongVatChanNuois" />
             <End Role="ThongKeChanNuoiNhoLe" EntitySet="ThongKeChanNuoiNhoLes" />
           </AssociationSet>
-          <AssociationSet Name="FK__Thuoc__MaDV__778AC167" Association="Self.FK__Thuoc__MaDV__778AC167">
+          <AssociationSet Name="FK__Thuoc__MaDV__74AE54BC" Association="Self.FK__Thuoc__MaDV__74AE54BC">
             <End Role="DongVatChanNuoi" EntitySet="DongVatChanNuois" />
             <End Role="Thuoc" EntitySet="Thuocs" />
           </AssociationSet>
-          <AssociationSet Name="FK__QuanLyTam__MaKhu__73BA3083" Association="Self.FK__QuanLyTam__MaKhu__73BA3083">
+          <AssociationSet Name="FK__Huyen__ProvinceI__398D8EEE" Association="Self.FK__Huyen__ProvinceI__398D8EEE">
+            <End Role="Tinh" EntitySet="Tinhs" />
+            <End Role="Huyen" EntitySet="Huyens" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Nguoi_dun__Distr__4316F928" Association="Self.FK__Nguoi_dun__Distr__4316F928">
+            <End Role="Huyen" EntitySet="Huyens" />
+            <End Role="Nguoi_dung" EntitySet="Nguoi_dung" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Xa__DistrictId__3C69FB99" Association="Self.FK__Xa__DistrictId__3C69FB99">
+            <End Role="Huyen" EntitySet="Huyens" />
+            <End Role="Xa" EntitySet="Xas" />
+          </AssociationSet>
+          <AssociationSet Name="FK__QuanLyTam__MaKhu__70DDC3D8" Association="Self.FK__QuanLyTam__MaKhu__70DDC3D8">
             <End Role="KhuTamGiu" EntitySet="KhuTamGius" />
             <End Role="QuanLyTamGiuTieuHuy" EntitySet="QuanLyTamGiuTieuHuys" />
           </AssociationSet>
-          <AssociationSet Name="FK__QuanLyChi__MaLCS__7D439ABD" Association="Self.FK__QuanLyChi__MaLCS__7D439ABD">
+          <AssociationSet Name="FK__QuanLyChi__MaLCS__7A672E12" Association="Self.FK__QuanLyChi__MaLCS__7A672E12">
             <End Role="LoaiCoSo" EntitySet="LoaiCoSoes" />
             <End Role="QuanLyChiCucThuY" EntitySet="QuanLyChiCucThuYs" />
           </AssociationSet>
           <AssociationSet Name="FK__Nguoi_dun__Provi__4222D4EF" Association="Self.FK__Nguoi_dun__Provi__4222D4EF">
-            <End Role="Provinces" EntitySet="Provinces" />
+            <End Role="Tinh" EntitySet="Tinhs" />
             <End Role="Nguoi_dung" EntitySet="Nguoi_dung" />
           </AssociationSet>
           <AssociationSet Name="FK__Nguoi_dun__WardI__440B1D61" Association="Self.FK__Nguoi_dun__WardI__440B1D61">
-            <End Role="Wards" EntitySet="Wards" />
+            <End Role="Xa" EntitySet="Xas" />
             <End Role="Nguoi_dung" EntitySet="Nguoi_dung" />
           </AssociationSet>
-          <AssociationSet Name="FK__QuanLyChi__MaVun__7E37BEF6" Association="Self.FK__QuanLyChi__MaVun__7E37BEF6">
+          <AssociationSet Name="FK__QuanLyChi__MaVun__7B5B524B" Association="Self.FK__QuanLyChi__MaVun__7B5B524B">
             <End Role="Vung" EntitySet="Vungs" />
             <End Role="QuanLyChiCucThuY" EntitySet="QuanLyChiCucThuYs" />
           </AssociationSet>
-          <AssociationSet Name="FK__QuanLyDai__MaThu__02084FDA" Association="Self.FK__QuanLyDai__MaThu__02084FDA">
+          <AssociationSet Name="FK__QuanLyDai__MaThu__7F2BE32F" Association="Self.FK__QuanLyDai__MaThu__7F2BE32F">
             <End Role="Thuoc" EntitySet="Thuocs" />
             <End Role="QuanLyDaiLyThuoc" EntitySet="QuanLyDaiLyThuocs" />
           </AssociationSet>
-          <AssociationSet Name="FK__ThongKeCh__MaTCC__6E01572D" Association="Self.FK__ThongKeCh__MaTCC__6E01572D">
+          <AssociationSet Name="FK__ThongKeCh__MaTCC__6B24EA82" Association="Self.FK__ThongKeCh__MaTCC__6B24EA82">
             <End Role="ToChucCaNhanChanNuoi" EntitySet="ToChucCaNhanChanNuois" />
             <End Role="ThongKeChanNuoiNhoLe" EntitySet="ThongKeChanNuoiNhoLes" />
           </AssociationSet>
@@ -1409,9 +1423,9 @@ error 6004: The table 'Database.dbo.QL_SP_XL_Chat_thai' is referenced by a relat
     <!-- C-S mapping content -->
     <edmx:Mappings>
       <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
-        <EntityContainerMapping StorageEntityContainer="DatabaseModelStoreContainer" CdmEntityContainer="DatabaseEntities">
+        <EntityContainerMapping StorageEntityContainer="Check1ModelStoreContainer" CdmEntityContainer="Check1Entities">
           <EntitySetMapping Name="Chuc_vu">
-            <EntityTypeMapping TypeName="DatabaseModel.Chuc_vu">
+            <EntityTypeMapping TypeName="Check1Model.Chuc_vu">
               <MappingFragment StoreEntitySet="Chuc_vu">
                 <ScalarProperty Name="IdRole" ColumnName="IdRole" />
                 <ScalarProperty Name="NameRole" ColumnName="NameRole" />
@@ -1419,7 +1433,7 @@ error 6004: The table 'Database.dbo.QL_SP_XL_Chat_thai' is referenced by a relat
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="CoQuanCapChungNhans">
-            <EntityTypeMapping TypeName="DatabaseModel.CoQuanCapChungNhan">
+            <EntityTypeMapping TypeName="Check1Model.CoQuanCapChungNhan">
               <MappingFragment StoreEntitySet="CoQuanCapChungNhan">
                 <ScalarProperty Name="MaCoQuanCap" ColumnName="MaCoQuanCap" />
                 <ScalarProperty Name="TenCoQuanCap" ColumnName="TenCoQuanCap" />
@@ -1430,7 +1444,7 @@ error 6004: The table 'Database.dbo.QL_SP_XL_Chat_thai' is referenced by a relat
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="CoSoChanNuois">
-            <EntityTypeMapping TypeName="DatabaseModel.CoSoChanNuoi">
+            <EntityTypeMapping TypeName="Check1Model.CoSoChanNuoi">
               <MappingFragment StoreEntitySet="CoSoChanNuoi">
                 <ScalarProperty Name="MaCoSoCN" ColumnName="MaCoSoCN" />
                 <ScalarProperty Name="TenCSCN" ColumnName="TenCSCN" />
@@ -1438,12 +1452,14 @@ error 6004: The table 'Database.dbo.QL_SP_XL_Chat_thai' is referenced by a relat
                 <ScalarProperty Name="MaTCCN" ColumnName="MaTCCN" />
                 <ScalarProperty Name="DiaChiCSCN" ColumnName="DiaChiCSCN" />
                 <ScalarProperty Name="MaDieuKien" ColumnName="MaDieuKien" />
+                <ScalarProperty Name="MaDV" ColumnName="MaDV" />
+                <ScalarProperty Name="MaDichBenh" ColumnName="MaDichBenh" />
                 <ScalarProperty Name="MaLCS" ColumnName="MaLCS" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="CoSoKhaoNghiemSPXLCTs">
-            <EntityTypeMapping TypeName="DatabaseModel.CoSoKhaoNghiemSPXLCT">
+            <EntityTypeMapping TypeName="Check1Model.CoSoKhaoNghiemSPXLCT">
               <MappingFragment StoreEntitySet="CoSoKhaoNghiemSPXLCT">
                 <ScalarProperty Name="ID_CoSoKhaoNghiemSPXLCT" ColumnName="ID_CoSoKhaoNghiemSPXLCT" />
                 <ScalarProperty Name="TenCSKNSPXLCT" ColumnName="TenCSKNSPXLCT" />
@@ -1454,7 +1470,7 @@ error 6004: The table 'Database.dbo.QL_SP_XL_Chat_thai' is referenced by a relat
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="CoSoSanXuatSPXLCTs">
-            <EntityTypeMapping TypeName="DatabaseModel.CoSoSanXuatSPXLCT">
+            <EntityTypeMapping TypeName="Check1Model.CoSoSanXuatSPXLCT">
               <MappingFragment StoreEntitySet="CoSoSanXuatSPXLCT">
                 <ScalarProperty Name="ID_CoSoSanXuatSPXLCT" ColumnName="ID_CoSoSanXuatSPXLCT" />
                 <ScalarProperty Name="TenCSSXSPXLCT" ColumnName="TenCSSXSPXLCT" />
@@ -1465,7 +1481,7 @@ error 6004: The table 'Database.dbo.QL_SP_XL_Chat_thai' is referenced by a relat
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="DaiLyThuocs">
-            <EntityTypeMapping TypeName="DatabaseModel.DaiLyThuoc">
+            <EntityTypeMapping TypeName="Check1Model.DaiLyThuoc">
               <MappingFragment StoreEntitySet="DaiLyThuoc">
                 <ScalarProperty Name="MaDaiLy" ColumnName="MaDaiLy" />
                 <ScalarProperty Name="TenDaiLy" ColumnName="TenDaiLy" />
@@ -1475,7 +1491,7 @@ error 6004: The table 'Database.dbo.QL_SP_XL_Chat_thai' is referenced by a relat
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="DichBenhs">
-            <EntityTypeMapping TypeName="DatabaseModel.DichBenh">
+            <EntityTypeMapping TypeName="Check1Model.DichBenh">
               <MappingFragment StoreEntitySet="DichBenh">
                 <ScalarProperty Name="MaDichBenh" ColumnName="MaDichBenh" />
                 <ScalarProperty Name="TenDichBenh" ColumnName="TenDichBenh" />
@@ -1485,33 +1501,23 @@ error 6004: The table 'Database.dbo.QL_SP_XL_Chat_thai' is referenced by a relat
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="DieuKienChanNuois">
-            <EntityTypeMapping TypeName="DatabaseModel.DieuKienChanNuoi">
+            <EntityTypeMapping TypeName="Check1Model.DieuKienChanNuoi">
               <MappingFragment StoreEntitySet="DieuKienChanNuoi">
                 <ScalarProperty Name="MaDieuKien" ColumnName="MaDieuKien" />
                 <ScalarProperty Name="MoTa" ColumnName="MoTa" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
-          <EntitySetMapping Name="Districts">
-            <EntityTypeMapping TypeName="DatabaseModel.District">
-              <MappingFragment StoreEntitySet="Districts">
-                <ScalarProperty Name="DistrictId" ColumnName="DistrictId" />
-                <ScalarProperty Name="TenHuyen" ColumnName="TenHuyen" />
-                <ScalarProperty Name="ProvinceId" ColumnName="ProvinceId" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
           <EntitySetMapping Name="DongVatChanNuois">
-            <EntityTypeMapping TypeName="DatabaseModel.DongVatChanNuoi">
+            <EntityTypeMapping TypeName="Check1Model.DongVatChanNuoi">
               <MappingFragment StoreEntitySet="DongVatChanNuoi">
                 <ScalarProperty Name="MaDV" ColumnName="MaDV" />
                 <ScalarProperty Name="LoaiDV" ColumnName="LoaiDV" />
-                <ScalarProperty Name="MaCoSoCN" ColumnName="MaCoSoCN" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="GiayChungNhans">
-            <EntityTypeMapping TypeName="DatabaseModel.GiayChungNhan">
+            <EntityTypeMapping TypeName="Check1Model.GiayChungNhan">
               <MappingFragment StoreEntitySet="GiayChungNhan">
                 <ScalarProperty Name="MaChungNhan" ColumnName="MaChungNhan" />
                 <ScalarProperty Name="TenChungNhan" ColumnName="TenChungNhan" />
@@ -1521,8 +1527,17 @@ error 6004: The table 'Database.dbo.QL_SP_XL_Chat_thai' is referenced by a relat
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
+          <EntitySetMapping Name="Huyens">
+            <EntityTypeMapping TypeName="Check1Model.Huyen">
+              <MappingFragment StoreEntitySet="Huyen">
+                <ScalarProperty Name="DistrictId" ColumnName="DistrictId" />
+                <ScalarProperty Name="TenHuyen" ColumnName="TenHuyen" />
+                <ScalarProperty Name="ProvinceId" ColumnName="ProvinceId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
           <EntitySetMapping Name="KhuTamGius">
-            <EntityTypeMapping TypeName="DatabaseModel.KhuTamGiu">
+            <EntityTypeMapping TypeName="Check1Model.KhuTamGiu">
               <MappingFragment StoreEntitySet="KhuTamGiu">
                 <ScalarProperty Name="MaKhu" ColumnName="MaKhu" />
                 <ScalarProperty Name="TenKhu" ColumnName="TenKhu" />
@@ -1531,7 +1546,7 @@ error 6004: The table 'Database.dbo.QL_SP_XL_Chat_thai' is referenced by a relat
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="LoaiCoSoes">
-            <EntityTypeMapping TypeName="DatabaseModel.LoaiCoSo">
+            <EntityTypeMapping TypeName="Check1Model.LoaiCoSo">
               <MappingFragment StoreEntitySet="LoaiCoSo">
                 <ScalarProperty Name="MaLCS" ColumnName="MaLCS" />
                 <ScalarProperty Name="TenLCS" ColumnName="TenLCS" />
@@ -1539,7 +1554,7 @@ error 6004: The table 'Database.dbo.QL_SP_XL_Chat_thai' is referenced by a relat
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="Nguoi_dung">
-            <EntityTypeMapping TypeName="DatabaseModel.Nguoi_dung">
+            <EntityTypeMapping TypeName="Check1Model.Nguoi_dung">
               <MappingFragment StoreEntitySet="Nguoi_dung">
                 <ScalarProperty Name="IdUser" ColumnName="IdUser" />
                 <ScalarProperty Name="UserName" ColumnName="UserName" />
@@ -1552,16 +1567,8 @@ error 6004: The table 'Database.dbo.QL_SP_XL_Chat_thai' is referenced by a relat
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
-          <EntitySetMapping Name="Provinces">
-            <EntityTypeMapping TypeName="DatabaseModel.Province">
-              <MappingFragment StoreEntitySet="Provinces">
-                <ScalarProperty Name="ProvinceId" ColumnName="ProvinceId" />
-                <ScalarProperty Name="TenTinh" ColumnName="TenTinh" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
           <EntitySetMapping Name="QuanLyChiCucThuYs">
-            <EntityTypeMapping TypeName="DatabaseModel.QuanLyChiCucThuY">
+            <EntityTypeMapping TypeName="Check1Model.QuanLyChiCucThuY">
               <MappingFragment StoreEntitySet="QuanLyChiCucThuY">
                 <ScalarProperty Name="MaCCTY" ColumnName="MaCCTY" />
                 <ScalarProperty Name="TenCCTY" ColumnName="TenCCTY" />
@@ -1571,7 +1578,7 @@ error 6004: The table 'Database.dbo.QL_SP_XL_Chat_thai' is referenced by a relat
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="QuanLyDaiLyThuocs">
-            <EntityTypeMapping TypeName="DatabaseModel.QuanLyDaiLyThuoc">
+            <EntityTypeMapping TypeName="Check1Model.QuanLyDaiLyThuoc">
               <MappingFragment StoreEntitySet="QuanLyDaiLyThuoc">
                 <ScalarProperty Name="MaQuanLy" ColumnName="MaQuanLy" />
                 <ScalarProperty Name="MaDaiLy" ColumnName="MaDaiLy" />
@@ -1581,7 +1588,7 @@ error 6004: The table 'Database.dbo.QL_SP_XL_Chat_thai' is referenced by a relat
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="QuanLyTamGiuTieuHuys">
-            <EntityTypeMapping TypeName="DatabaseModel.QuanLyTamGiuTieuHuy">
+            <EntityTypeMapping TypeName="Check1Model.QuanLyTamGiuTieuHuy">
               <MappingFragment StoreEntitySet="QuanLyTamGiuTieuHuy">
                 <ScalarProperty Name="MaQuanLy" ColumnName="MaQuanLy" />
                 <ScalarProperty Name="MaKhu" ColumnName="MaKhu" />
@@ -1591,17 +1598,29 @@ error 6004: The table 'Database.dbo.QL_SP_XL_Chat_thai' is referenced by a relat
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="SP_XL_chat_thai">
-            <EntityTypeMapping TypeName="DatabaseModel.SP_XL_chat_thai">
+            <EntityTypeMapping TypeName="Check1Model.SP_XL_chat_thai">
               <MappingFragment StoreEntitySet="SP_XL_chat_thai">
                 <ScalarProperty Name="IDSP" ColumnName="IDSP" />
                 <ScalarProperty Name="TenSP" ColumnName="TenSP" />
                 <ScalarProperty Name="LoaiSP" ColumnName="LoaiSP" />
-                <ScalarProperty Name="HanSDSP" ColumnName="HanSDSP" />
+                <ScalarProperty Name="NgaySX" ColumnName="NgaySX" />
+                <ScalarProperty Name="HanSD" ColumnName="HanSD" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="sysdiagrams">
+            <EntityTypeMapping TypeName="Check1Model.sysdiagram">
+              <MappingFragment StoreEntitySet="sysdiagrams">
+                <ScalarProperty Name="name" ColumnName="name" />
+                <ScalarProperty Name="principal_id" ColumnName="principal_id" />
+                <ScalarProperty Name="diagram_id" ColumnName="diagram_id" />
+                <ScalarProperty Name="version" ColumnName="version" />
+                <ScalarProperty Name="definition" ColumnName="definition" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="ThongKeChanNuoiNhoLes">
-            <EntityTypeMapping TypeName="DatabaseModel.ThongKeChanNuoiNhoLe">
+            <EntityTypeMapping TypeName="Check1Model.ThongKeChanNuoiNhoLe">
               <MappingFragment StoreEntitySet="ThongKeChanNuoiNhoLe">
                 <ScalarProperty Name="MaThongKe" ColumnName="MaThongKe" />
                 <ScalarProperty Name="MaTCCN" ColumnName="MaTCCN" />
@@ -1612,7 +1631,7 @@ error 6004: The table 'Database.dbo.QL_SP_XL_Chat_thai' is referenced by a relat
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="Thuocs">
-            <EntityTypeMapping TypeName="DatabaseModel.Thuoc">
+            <EntityTypeMapping TypeName="Check1Model.Thuoc">
               <MappingFragment StoreEntitySet="Thuoc">
                 <ScalarProperty Name="MaThuoc" ColumnName="MaThuoc" />
                 <ScalarProperty Name="TenThuoc" ColumnName="TenThuoc" />
@@ -1621,8 +1640,16 @@ error 6004: The table 'Database.dbo.QL_SP_XL_Chat_thai' is referenced by a relat
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
+          <EntitySetMapping Name="Tinhs">
+            <EntityTypeMapping TypeName="Check1Model.Tinh">
+              <MappingFragment StoreEntitySet="Tinh">
+                <ScalarProperty Name="ProvinceId" ColumnName="ProvinceId" />
+                <ScalarProperty Name="TenTinh" ColumnName="TenTinh" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
           <EntitySetMapping Name="ToChucCaNhanChanNuois">
-            <EntityTypeMapping TypeName="DatabaseModel.ToChucCaNhanChanNuoi">
+            <EntityTypeMapping TypeName="Check1Model.ToChucCaNhanChanNuoi">
               <MappingFragment StoreEntitySet="ToChucCaNhanChanNuoi">
                 <ScalarProperty Name="MaTCCN" ColumnName="MaTCCN" />
                 <ScalarProperty Name="TenTCCN" ColumnName="TenTCCN" />
@@ -1632,7 +1659,7 @@ error 6004: The table 'Database.dbo.QL_SP_XL_Chat_thai' is referenced by a relat
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="Vungs">
-            <EntityTypeMapping TypeName="DatabaseModel.Vung">
+            <EntityTypeMapping TypeName="Check1Model.Vung">
               <MappingFragment StoreEntitySet="Vung">
                 <ScalarProperty Name="MaVung" ColumnName="MaVung" />
                 <ScalarProperty Name="TenVung" ColumnName="TenVung" />
@@ -1640,9 +1667,9 @@ error 6004: The table 'Database.dbo.QL_SP_XL_Chat_thai' is referenced by a relat
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
-          <EntitySetMapping Name="Wards">
-            <EntityTypeMapping TypeName="DatabaseModel.Ward">
-              <MappingFragment StoreEntitySet="Wards">
+          <EntitySetMapping Name="Xas">
+            <EntityTypeMapping TypeName="Check1Model.Xa">
+              <MappingFragment StoreEntitySet="Xa">
                 <ScalarProperty Name="WardId" ColumnName="WardId" />
                 <ScalarProperty Name="TenXa" ColumnName="TenXa" />
                 <ScalarProperty Name="DistrictId" ColumnName="DistrictId" />
