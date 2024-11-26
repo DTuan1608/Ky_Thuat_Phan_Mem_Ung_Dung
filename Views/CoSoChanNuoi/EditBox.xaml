@@ -1,0 +1,23 @@
+﻿<UserControl x:Class="KTPMUD.Views.CoSoChanNuoi.EditBox"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:KTPMUD.Views.CoSoChanNuoi"
+             mc:Ignorable="d" 
+             d:DesignHeight="450" d:DesignWidth="800">
+    <StackPanel>
+        <StackPanel>
+            <Label Content="Tên" />
+            <TextBox />
+        </StackPanel>
+        <StackPanel>
+            <Label Content="Điện thoại liên hệ" />
+            <TextBox />
+        </StackPanel>
+        <StackPanel>
+            <Label Content="Địa chỉ" />
+            <TextBox />
+        </StackPanel>
+    </StackPanel>
+</UserControl>

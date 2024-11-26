@@ -15,5 +15,5 @@ namespace KTPMUD
     /// </summary>
     public partial class App : Application
     {   
-        
+        static public void Request(string url, params object[] args) => System.Mvc.Engine.Execute(url, args);
     }

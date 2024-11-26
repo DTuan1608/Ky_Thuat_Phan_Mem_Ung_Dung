@@ -30,6 +30,8 @@ namespace KTPMUD.Views.Main
                 var uie = view.Content as UIElement;
                 this.MainContent.Child = uie;
             });
+
+            System.Mvc.Engine.Execute("CoSoChanNuoi/Add");
         }
 
     }

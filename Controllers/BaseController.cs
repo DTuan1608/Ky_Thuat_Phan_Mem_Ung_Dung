@@ -11,7 +11,8 @@ namespace KTPMUD.Controllers
 {
     public class BaseController : System.Mvc.Controller
     {
-        public virtual object Index() => View();
+        static public Provider Provider { get; set; } = new Provider();
+        public virtual object Index() => View(Provider.Select(this.ControllerName));
 
     }
 }
