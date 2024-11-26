@@ -32,7 +32,7 @@ namespace KTPMUD.UserControllDT
         {
             var currentWindow = Window.GetWindow(this);
 
-            if (currentWindow is MainWin)
+            if (currentWindow is MainWin || currentWindow is SignWin)
             {
                 // Quay về LoginWindow khi đóng MainWindow
                 var loginWindow = new Login();

@@ -21,7 +21,6 @@ namespace KTPMUD.Views.Main
     /// </summary>
     public partial class MainWin : Window
     {
-        
         public MainWin()
         {
             InitializeComponent();
@@ -30,11 +29,6 @@ namespace KTPMUD.Views.Main
                 var view = r.View;
                 var uie = view.Content as UIElement;
                 this.MainContent.Child = uie;
-
-                var cname = System.Mvc.Engine.RequestContext.ControllerName;
-                InsertButton.Url = cname + "/Insert";
-                EditButton.Url = cname + "/Edit";
-                DeleteButton.Url = cname + "/Delete";
             });
         }
 

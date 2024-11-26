@@ -40,7 +40,7 @@
                             </DataTemplate>
                         </DataGridTemplateColumn.CellTemplate>
                     </DataGridTemplateColumn>
-                   
+
                     <DataGridTemplateColumn Header="Xóa" Width="80">
                         <DataGridTemplateColumn.CellTemplate>
                             <DataTemplate>
@@ -50,7 +50,6 @@
                             </DataTemplate>
                         </DataGridTemplateColumn.CellTemplate>
                     </DataGridTemplateColumn>
-                    
                 </DataGrid.Columns>
             </DataGrid>
         </Border>
