@@ -152,6 +152,7 @@
     <Compile Include="Models\Nguoi_dung.cs">
       <DependentUpon>Model1.tt</DependentUpon>
     </Compile>
+    <Compile Include="Models\Provider.cs" />
     <Compile Include="Models\Province.cs">
       <DependentUpon>Model1.tt</DependentUpon>
     </Compile>
@@ -192,6 +193,9 @@
     <Compile Include="Views\CoSoChanNuoi\CoSoChanNuoiLayout.xaml.cs">
       <DependentUpon>CoSoChanNuoiLayout.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Views\CoSoChanNuoi\EditBox.xaml.cs">
+      <DependentUpon>EditBox.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Views\CoSoCheBien\CoSoCheBienLayout.xaml.cs">
       <DependentUpon>CoSoCheBienLayout.xaml</DependentUpon>
     </Compile>
@@ -203,6 +207,9 @@
     </Compile>
     <Compile Include="Views\DaiLyBanThuoc\DaiLyBanThuocLayout.xaml.cs">
       <DependentUpon>DaiLyBanThuocLayout.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\FormViewLayout.xaml.cs">
+      <DependentUpon>FormViewLayout.xaml</DependentUpon>
     </Compile>
     <Compile Include="Views\Home\IndexLayout.xaml.cs">
       <DependentUpon>IndexLayout.xaml</DependentUpon>
@@ -264,6 +271,10 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
+    <Page Include="Views\CoSoChanNuoi\EditBox.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="Views\CoSoCheBien\CoSoCheBienLayout.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
@@ -277,6 +288,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="Views\DaiLyBanThuoc\DaiLyBanThuocLayout.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\FormViewLayout.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

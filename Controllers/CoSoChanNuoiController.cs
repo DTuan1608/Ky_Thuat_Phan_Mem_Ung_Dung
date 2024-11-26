@@ -12,8 +12,8 @@ namespace KTPMUD.Controllers
     internal class CoSoChanNuoiController : BaseController
     {
         
-        public virtual object CoSoChanNuoiLayout() => View();
 
-        
+        public object Add() => View();
+        public object Edit(Models.CoSoChanNuoi value) => View(value);
     }
 }

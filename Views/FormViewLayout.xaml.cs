@@ -1,8 +1,6 @@
 ﻿using DeviceConfig.Views;
 using System;
 using System.Collections.Generic;
-using System.Collections.ObjectModel;
-using System.Data.Entity.ModelConfiguration.Configuration;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -16,27 +14,25 @@ using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
 
-namespace KTPMUD.Views.CoSoChanNuoi
+namespace KTPMUD.Views
 {
     /// <summary>
-    /// Interaction logic for CoSoChanNuoiLayout.xaml
+    /// Interaction logic for FormViewLayout.xaml
     /// </summary>
-    public partial class CoSoChanNuoiLayout : UserControl
+    public partial class FormViewLayout : UserControl
     {
-        public CoSoChanNuoiLayout()
+        public FormViewLayout()
         {
             InitializeComponent();
         }
     }
-    public class Index : BaseView<CoSoChanNuoiLayout, System.Data.DataTable> 
+    
+    public class BaseForView<TView> : BaseView<FormViewLayout, object>
+        where TView : FrameworkElement, new()
     {
         protected override void RenderCore()
         {
-            base.RenderCore();
-            MainContent.dataGrid.ItemsSource = Model.DefaultView;
+            MainContent.Body.Child = new TView();
         }
-    }
-
-
-
+    }    
 }

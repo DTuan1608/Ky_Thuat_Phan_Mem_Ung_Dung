@@ -26,6 +26,13 @@ namespace KTPMUD.Views.CoSoKhaoNghiemSPXLCT
             InitializeComponent();
         }
     }
-    public class Index : BaseView <CoSoKhaoNghiemSPXLCTLayout, object> { }
+    public class Index : BaseView <CoSoKhaoNghiemSPXLCTLayout, System.Data.DataTable> 
+    {
+        protected override void RenderCore()
+        {
+            base.RenderCore();
+            MainContent.dataGrid.ItemsSource = Model.DefaultView;
+        }
+    }
 
 }

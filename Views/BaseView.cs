@@ -23,4 +23,13 @@ namespace DeviceConfig.Views
             RenderCore();
         }
     }
+
+    public class BaseDataView<TControl> : BaseView<TControl, System.Data.DataTable>
+        where TControl : System.Windows.FrameworkElement, new()
+    {
+        protected override void RenderCore()
+        {
+            
+        }
+    }
 }
